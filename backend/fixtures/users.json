@@ -1,0 +1,18 @@
+[
+    {
+        "model": "User",
+        "data": {
+            "id": 1,
+            "email": "user@user.fr",
+            "password": "$2b$10$Q4Pu.nPLjOuVoe/G9HwjnuEZG4Gnk7xdYHgjah.AMO6Hy/SZPX9yG"
+        }
+    },
+    {
+        "model": "User",
+        "data": {
+            "id": 2,
+            "email": "user2@user.fr",
+            "password": "$2b$10$Q4Pu.nPLjOuVoe/G9HwjnuEZG4Gnk7xdYHgjah.AMO6Hy/SZPX9yG"
+        }
+    }
+]

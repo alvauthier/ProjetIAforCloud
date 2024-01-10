@@ -1,0 +1,58 @@
+[
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 1,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 4,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 5,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 8,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 7,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 12,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 1,
+            "recipeId": 2
+        }
+    }
+]

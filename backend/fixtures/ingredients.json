@@ -1,0 +1,90 @@
+[
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 1,
+            "name": "boeuf",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 2,
+            "name": "poulet",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 3,
+            "name": "jambon",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 4,
+            "name": "oignons",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 5,
+            "name": "ail",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 7,
+            "name": "citron",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 8,
+            "name": "gingenbre",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 9,
+            "name": "tomate",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 10,
+            "name": "poivron",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 11,
+            "name": "sel",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 12,
+            "name": "pommes de terre",
+            "unit": "g"
+        }
+    }
+]

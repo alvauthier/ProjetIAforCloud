@@ -1,0 +1,16 @@
+[
+    {
+        "model": "Restriction",
+        "data": {
+            "name": "Kiwi",
+            "userId": 1
+        }
+    },
+    {
+        "model": "Restriction",
+        "data": {
+            "name": "Noix",
+            "userId": 1
+        }
+    }
+]

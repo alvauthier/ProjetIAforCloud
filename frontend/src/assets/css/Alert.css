@@ -1,0 +1,21 @@
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 13px 15px;
+    font-weight: 500;
+}
+
+.alert__success {
+    background-color: var(--primay-selected);
+    color: var(--primary);
+}
+
+.alert__error {
+    background-color: var(--error-background);
+    color: var(--error);
+}

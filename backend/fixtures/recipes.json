@@ -1,0 +1,20 @@
+[
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 1,
+            "name": "Boeuf aux oignons",
+            "description": "Recette simple et traditionnelle du boeuf aux oignons.",
+            "instructions": "Etape 1 : Mélangez l'ail, le gingembre avec la moitié de la sauce soja et la maïzena et faites mariner le boeuf pendant 1/2 heure au frais."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 2,
+            "name": "Hachi parmentier",
+            "description": "Un hachi parmentier simple et rapide à faire.",
+            "instructions": "Préparez la purée : épluchez les pommes de terre, coupez-les en morceaux et faites-les cuire dans une casserole d'eau salée. Egouttez-les et écrasez-les à la fourchette avec le beurre et le lait. Salez et poivrez."
+        }
+    }
+]
