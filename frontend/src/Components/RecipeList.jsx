@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import "@css/RecipeList.css";
+import {useNavigate} from "react-router-dom";
 
 const env = import.meta.env;
 
 const RecipeList = ({ recipes }) => {
     const [recipeDetails, setRecipeDetails] = useState({});
-
+    let navigate = useNavigate()
+    function handleConsult(recipeId) {
+        navigate(`/recipe/${recipeId}`)
+    }
     useEffect(() => {
         const fetchRecipeDetails = async () => {
             const details = {};
@@ -31,6 +35,8 @@ const RecipeList = ({ recipes }) => {
 
         fetchRecipeDetails();
     }, [recipes]);
+
+
 
     return (
         <div className="recipe-list">

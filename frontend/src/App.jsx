@@ -9,6 +9,7 @@ import Login from './Components/Authentication/Login';
 import SignUp from './Components/Authentication/SignUp';
 import Profile from './Components/Profile';
 import HomePage from './Components/HomePage';
+import Recipe from './Components/Recipe';
 
 function App() {
   const [isConnected, setIsConnected] = useState(!!localStorage.getItem('token'));
@@ -43,6 +44,7 @@ function App() {
             <Route path="login" element={<Login handleConnect={handleConnect} />} />
 
             <Route path="profile" element={<Profile />} />
+            <Route path="recipe/:id" element={<Recipe/>} />
 
             {/* Route doesn't exist */}
             <Route path="*" element={<Navigate to="/" />} />
