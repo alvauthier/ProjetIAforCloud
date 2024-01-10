@@ -28,7 +28,7 @@
         "data": {
             "id": 4,
             "name": "oignons",
-            "unit": "g"
+            "unit": "nombre"
         }
     },
     {
@@ -36,7 +36,7 @@
         "data": {
             "id": 5,
             "name": "ail",
-            "unit": "g"
+            "unit": "gousse"
         }
     },
     {
@@ -60,7 +60,7 @@
         "data": {
             "id": 9,
             "name": "tomate",
-            "unit": "g"
+            "unit": "nombre"
         }
     },
     {
@@ -68,7 +68,7 @@
         "data": {
             "id": 10,
             "name": "poivron",
-            "unit": "g"
+            "unit": "nombre"
         }
     },
     {
@@ -84,7 +84,111 @@
         "data": {
             "id": 12,
             "name": "pommes de terre",
+            "unit": "nombre"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 13,
+            "name": "vinaigre balsamique",
+            "unit": "cuillère à soupe"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 14,
+            "name": "huile d'olive",
+            "unit": "cuillère à soupe"
+        }   
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 15,
+            "name": "moutarde",
+            "unit": "cuillère à soupe"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 16,
+            "name": "fond de veau",
+            "unit": "cuillère à soupe"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 17,
+            "name": "paupiettes de veau ",
+            "unit": "nombre"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 18,
+            "name": "vin blanc",
+            "unit": "cl"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 19,
+            "name": "eau",
+            "unit": "cl"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 20,
+            "name": "Thym",
+            "unit": "branche"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 21,
+            "name": "beurre",
             "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 22,
+            "name": "poivre",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 23,
+            "name": "miel",
+            "unit": "cuillère à soupe"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 24,
+            "name": "porc",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "Ingredient",
+        "data": {
+            "id": 25,
+            "name": "bouillon de volaille ",
+            "unit": "cl"
         }
     }
 ]

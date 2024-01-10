@@ -5,6 +5,7 @@
             "id": 1,
             "name": "Boeuf aux oignons",
             "description": "Recette simple et traditionnelle du boeuf aux oignons.",
+            "image" : "",
             "instructions": "Etape 1 : Mélangez l'ail, le gingembre avec la moitié de la sauce soja et la maïzena et faites mariner le boeuf pendant 1/2 heure au frais."
         }
     },
@@ -14,7 +15,38 @@
             "id": 2,
             "name": "Hachi parmentier",
             "description": "Un hachi parmentier simple et rapide à faire.",
+            "image" : "",
             "instructions": "Préparez la purée : épluchez les pommes de terre, coupez-les en morceaux et faites-les cuire dans une casserole d'eau salée. Egouttez-les et écrasez-les à la fourchette avec le beurre et le lait. Salez et poivrez."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 3,
+            "name": "Paupiettes de veau ",
+            "description": "Une viande simple qui s'accomode avec tout légume ou féculents.",
+            "image" : "",
+            "instructions": "Etape 1 : Dans une sauteuse, faire chauffer l'huile d'olive avec la gousse d'ail finement coupée, à feu moyen. Etape 2 : Lorsque c'est bien chaud, mettre les paupiettes à dorer quelques minutes de chaque côté. Etape 3 : Quand toutes les faces sont légèrement colorées, ajouter le fond de veau et mouiller avec le vin blanc et l'eau. Etape 4 : Ensuite mettre la moutarde, le vinaigre balsamique et bien mélanger en retournant les paupiettes pour qu'elles s'imbibent bien de la sauce. Etape 5 : Laisser cuire 5 minutes à feu moyen, pour que l'alcool du vin blanc s'évapore, puis mettre à feu doux et couvrir. Laisser mijoter 20 minutes environ, en retournant les paupiettes de temps en temps."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 4,
+            "name": "Poulet rôti et ses pommes de terre",
+            "description": "Un bon poulet rôti bien grillé, cuit avec des pommes de terre fondantes et gourmandes.",
+            "image" : "",
+            "instructions": "Etape 1 : Préchauffez votre four à 180°C (th.6). Dans un plat à four, mettez votre poulet entier. Badigeonnez-le d’huile d'olive, de beurre et assaisonnez-le de sel, de poivre, puis ajoutez un verre d’eau. Etape 2 : Épluchez vos pommes de terre, découpez-les en gros dés et passez-les sous l'eau claire pour enlever l'amidon. Puis disposez-les autour de votre volaille. Ciselez le thym, et hachez les gousses d'ail. Puis mélangez-les aux pommes de terre. Salez et poivrez à votre convenance. Etape 3 : Enfournez votre plat à mi-hauteur pendant environ 1h30. Remuez de temps en temps pour que les pommes de terre n'accrochent pas dans le fond de votre plat. Pensez également à arroser votre poulet de temps en temps pour qu'il soit plus moelleux. Etape 4 : Lorsque votre poulet est cuit, sortez-le du plat et découpez-le sur une planche. Puis remettez-le dans votre plat à four. Servez bien chaud, avec une salade verte bien assaisonnée."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 5,
+            "name": "Rôti de porc",
+            "description": "recette savoureuse.",
+            "image" : "",
+            "instructions": "Etape 1 : Préchauffer le four à 180°C (thermostat 6). Etape 2 : Mélanger tous les ingrédients ensemble, sauf le rôti et les rondelles d'oignons. Etape 3 : Badigeonner le rôti de cette sauce et le coucher sur les oignons. Rectifier l'assaisonnement si besoin. Etape 4 : Ajouter le bouillon, couvrir le rôti et mettre au four pendant environ 1h30. Etape 5 : Pour vérifier la cuisson, piquer avec un cure-dent. S'il pénètre facilement, le rôti est à point."
         }
     }
 ]

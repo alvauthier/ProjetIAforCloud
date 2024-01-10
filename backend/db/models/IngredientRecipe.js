@@ -6,7 +6,7 @@ module.exports = function (connection) {
     IngredientRecipe.init(
         {
             quantity: {
-                type: DataTypes.INTEGER,
+                type: DataTypes.DOUBLE,
                 allowNull: false,
             },
             ingredientId: {
