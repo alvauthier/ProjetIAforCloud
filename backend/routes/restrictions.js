@@ -7,6 +7,6 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 router.get('/:userId', restrictionsCtrl.getUserRestrictions);
 router.post('/add/:userId', restrictionsCtrl.addUserRestrictions);
-// router.delete('/delete/:userId', restrictionsCtrl.deleteUserRestrictions);
+router.delete('/delete/:userId/:restrictionId', restrictionsCtrl.deleteUserRestrictions);
 
 module.exports = router;

@@ -43,35 +43,33 @@ async function addUserRestrictions(req, res) {
   }
 }
 
-// async function deleteUserRestrictions(req, res) {
-//   console.log('-- Fonction deleteUserRestrictions --');
-//   const { userId, ingredientNames } = req.body;
+async function deleteUserRestrictions(req, res) {
+  const { userId, restrictionId } = req.params;
 
-//   try {
-//     console.log('Suppression des restrictions de l\'utilisateur', userId, 'pour les ingrédients', ingredientNames)
-//     // Trouver les ingredientId correspondants
-//     const ingredients = await Ingredient.findAll({
-//       where: { name: ingredientNames },
-//     });
+  try {
+    const user = await User.findByPk(userId);
 
-//     const ingredientIds = ingredients.map((ingredient) => ingredient.id);
+    if (!user) {
+      return res.status(404).json({ error: 'Utilisateur non trouvé' });
+    }
 
-//     // Supprimer les restrictions correspondantes
-//     await Restriction.destroy({
-//       where: {
-//         userId,
-//         ingredientId: ingredientIds,
-//       },
-//     });
+    const restriction = await Restriction.findByPk(restrictionId);
 
-//     res.json({ message: 'Restrictions supprimées avec succès' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Erreur lors de la suppression des restrictions' });
-//   }
-// }
+    if (!restriction) {
+      return res.status(404).json({ error: 'Restriction non trouvée' });
+    }
+
+    await restriction.destroy();
+
+    res.json({ message: 'Restriction supprimée avec succès' });
+  } catch (error) {
+    console.error('Erreur lors de la suppression de la restriction:', error);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+}
 
 module.exports = {
   getUserRestrictions,
   addUserRestrictions,
-  // deleteUserRestrictions,
+  deleteUserRestrictions,
 };

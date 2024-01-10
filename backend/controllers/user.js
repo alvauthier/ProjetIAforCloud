@@ -85,7 +85,7 @@ async function login(req, res) {
 
     res.cookie("token", token, {
       maxAge: 24 * 60 * 60 * 1000, // Durée de validité du cookie en millisecondes (24 heures dans cet exemple)
-      httpOnly: true, // Empêche l'accès au cookie depuis JavaScript côté client
+      httpOnly: false, // Empêche l'accès au cookie depuis JavaScript côté client
       secure: false, // Le cookie sera envoyé uniquement via une connexion HTTPS si votre application est en production
       sameSite: false,
       signed: false,

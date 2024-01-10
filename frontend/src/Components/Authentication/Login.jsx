@@ -17,6 +17,7 @@ function Login({ handleConnect }) {
         try {
             const result = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/login`, {
                 method: 'POST',
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },

@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       '@css': '/src/assets/css',
       '@img': '/src/assets/img',
+      '@services': '/src/services',
     },
   },
 })

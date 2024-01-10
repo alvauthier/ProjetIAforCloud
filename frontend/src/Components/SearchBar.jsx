@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import '@css/SearchBar.css';
 import RecipeList from './RecipeList';
+import { getUserIdFromToken } from '@services/getUserId';
 const env = import.meta.env;
 
 const RecipeSearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isListening, setIsListening] = useState(false);
     const [error, setError] = useState(null);
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState([]);;
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -17,10 +18,17 @@ const RecipeSearchBar = ({ onSearch }) => {
         console.log('Recherche de la recette :', searchTerm);
         await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ searchTerm }),
+            body: JSON.stringify({ 
+                searchTerm,
+            }),
+            // body: JSON.stringify({
+            //     userId,
+            //     restrictionId: restrictionId,
+            // }),
             })
             .then(response => response.json())
             .then(data => {
@@ -39,6 +47,7 @@ const RecipeSearchBar = ({ onSearch }) => {
         console.log('Recherche de la recette :', searchValue);
         await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -88,6 +97,7 @@ const RecipeSearchBar = ({ onSearch }) => {
 
     const stopListening = () => {
         recognition.stop();
+        // setIsListening(false);
     };
 
     recognition.onerror = (event) => {
