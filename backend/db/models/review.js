@@ -1,9 +1,9 @@
 module.exports = function (connection) {
     const { DataTypes, Model } = require("sequelize");
 
-    class RecipeReview extends Model {}
+    class Review extends Model {}
 
-    RecipeReview.init(
+    Review.init(
         {
             review: {
                 type: DataTypes.TEXT,
@@ -17,10 +17,6 @@ module.exports = function (connection) {
                     max: 5,
                 },
             },
-            isFavorite: {
-                type: DataTypes.BOOLEAN,
-                allowNull: true,
-            },
             userId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
@@ -31,10 +27,10 @@ module.exports = function (connection) {
             },
         },
         {
-            tableName: "recipeReview",
+            tableName: "review",
             sequelize: connection,
         },
     );
 
-    return RecipeReview;
+    return Review;
 }

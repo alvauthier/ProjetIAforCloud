@@ -1,0 +1,9 @@
+[
+    {
+        "model": "Favorites",
+        "data": {
+            "userId": 1,
+            "recipeId": 1
+        }
+    }
+]

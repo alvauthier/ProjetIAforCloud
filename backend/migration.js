@@ -9,7 +9,7 @@ connection
   .then(() => {
     console.log("Database synchronized");
 
-    const fixtureFiles = ['users.json', 'ingredients.json', 'recipes.json', 'ingredientsRecipes.json', 'restrictions.json'];
+    const fixtureFiles = ['users.json', 'ingredients.json', 'recipes.json', 'ingredientsRecipes.json', 'restrictions.json', 'favorites.json', 'review.json'];
     const fixturePaths = fixtureFiles.map((file) => path.join(__dirname, "fixtures", file));
     return fixtures.loadFiles(fixturePaths, connection.models);
   }).then(() => {
