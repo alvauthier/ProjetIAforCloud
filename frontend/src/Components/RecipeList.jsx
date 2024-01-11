@@ -21,7 +21,7 @@ const RecipeList = ({ recipes }) => {
                         if (!response.ok) {
                             throw new Error(`Réponse non valide: ${response.status}`);
                         }
-
+                        console.log(response)
                         const data = await response.json();
                         details[recipeId] = data;
                     } catch (error) {

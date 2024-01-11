@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 const env = import.meta.env;
 import "@css/UniqueRecipe.css"
 
@@ -7,7 +7,15 @@ function Recipe() {
     const [recipeDetails, setRecipeDetails] = useState({
         Ingredients: []
     })
-    const [similarRecepes, setSimilarRecepes] = useState(null)
+    const [similarRecepes, setSimilarRecepes] = useState({
+        Recettes: []
+    })
+    let navigate = useNavigate()
+
+    function handleConsult(recipeId) {
+        navigate(`/recipe/${recipeId}`)
+        console.log("toto")
+    }
 
     let { id } = useParams()
 
@@ -30,9 +38,30 @@ function Recipe() {
                 return setRecipeDetails(detail);
             })
         }
+
+        async function fetchSimilarRecipe() {
+            const recipeId = id;
+            let detail = {}
+            await new Promise(async () => {
+                try {
+                    const response = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/similarRecipe/${recipeId}`, {})
+                        .then(response => response.json())
+                        .then(data => {
+                            const responseAI = JSON.parse(data.responseAI);
+                            setSimilarRecepes(responseAI)
+                        })
+                    if (!response.ok) {
+                        throw new Error(`Réponse non valide: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error(`Erreur lors de la récupération des détails de la recette ${recipeId}:`, error);
+                }
+            })
+        }
+
+        fetchSimilarRecipe();
         fetchRecipeDetails();
     }, []);
-        console.log(recipeDetails.Ingredients.map(i=> {return i.IngredientRecipe.quantity}))
 
     return (
         <>
@@ -64,8 +93,8 @@ function Recipe() {
                     </div>
 
                     <div className="uniqueRecipeLayout_right-col">
-                        <h4>Recettes similaires</h4>
-                        <div>{similarRecepes !== null ? similarRecepes.map(simRec => {return <div>{simRec}.name</div>}) : <div>Pas de recettes similaires</div>}</div>
+                        <h3>Recettes similaires</h3>
+                        {similarRecepes ? similarRecepes.Recettes.map(simRec => { return <div key={simRec.id}><h4>{simRec.name}</h4><button onClick={() => handleConsult(simRec.id)}>Consulter la recette</button></div> }) : <div>Pas de recettes similaires</div>}
                     </div>
                 </div>
 
