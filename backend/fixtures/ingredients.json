@@ -28,7 +28,7 @@
         "data": {
             "id": 4,
             "name": "oignons",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -60,7 +60,7 @@
         "data": {
             "id": 9,
             "name": "tomate",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -68,7 +68,7 @@
         "data": {
             "id": 10,
             "name": "poivron",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -84,7 +84,7 @@
         "data": {
             "id": 12,
             "name": "pommes de terre",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -124,7 +124,7 @@
         "data": {
             "id": 17,
             "name": "paupiettes de veau ",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -228,7 +228,7 @@
         "data": {
             "id": 30,
             "name": "oeuf",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -332,7 +332,7 @@
         "data": {
             "id": 43,
             "name": "concombre",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -340,7 +340,7 @@
         "data": {
             "id": 44,
             "name": "chou fleur",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -356,7 +356,7 @@
         "data": {
             "id": 46,
             "name": "pruneaux",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
@@ -412,7 +412,7 @@
         "data": {
             "id": 53,
             "name": "pate feuilletee",
-            "unit": "nombre"
+            "unit": ""
         }
     },
     {
