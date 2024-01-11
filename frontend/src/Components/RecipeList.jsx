@@ -47,7 +47,7 @@ const RecipeList = ({ recipes }) => {
                             <>
                                 <h2>{recipeDetails[recipeId].name}</h2>
                                 <p>{recipeDetails[recipeId].description}</p>
-                                <button onClick={() => handleConsult(recipeId)}>Consulter la recette</button>
+                                <button className='consult' onClick={() => handleConsult(recipeId)}>Consulter la recette</button>
                             </>
                         ) : (
                             <p>Chargement des détails...</p>

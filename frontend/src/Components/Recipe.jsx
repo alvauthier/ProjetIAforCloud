@@ -8,6 +8,7 @@ function Recipe() {
         Ingredients: []
     })
     const [similarRecepes, setSimilarRecepes] = useState(null)
+    const [isFavorited, setIsFavorited] = useState(false);
 
     let { id } = useParams()
 
@@ -34,10 +35,17 @@ function Recipe() {
     }, []);
         console.log(recipeDetails.Ingredients.map(i=> {return i.IngredientRecipe.quantity}))
 
+        const handleFavoriteClick = async () => {
+            setIsFavorited(!isFavorited);
+        }
+
     return (
         <>
             <main>
                 <h1>{recipeDetails.name}</h1>
+                <button onClick={handleFavoriteClick}>
+                {isFavorited ? '❤️' : '🤍'}
+                </button>
                 <div className="uniqueRecipeLayout">
                     <div className="uniqueRecipeLayout_left-col">
                         <div>
