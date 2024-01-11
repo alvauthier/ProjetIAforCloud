@@ -19,6 +19,13 @@ function Profile({ }) {
             try {
                 const [restrictionsResponse] = await Promise.all([
                     userId && fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/restrictions/${userId}`),
+                    {
+                        method: "GET",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
                 ]);
 
                 const restrictionsData = userId ? await restrictionsResponse.json() : [];
@@ -43,6 +50,7 @@ function Profile({ }) {
                 `${env.VITE_URL}:${env.VITE_PORT_BACK}/restrictions/delete/${userId}/${restrictionId}`,
                 {
                     method: "DELETE",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
@@ -65,11 +73,12 @@ function Profile({ }) {
                 `${env.VITE_URL}:${env.VITE_PORT_BACK}/restrictions/add/${userId}`,
                 {
                     method: "POST",
+                    credentials: "include",
                     headers: {
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        userId,
+                        // userId,
                         restriction: newRestriction,
                     }),
                 }

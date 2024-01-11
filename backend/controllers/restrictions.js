@@ -4,10 +4,13 @@ const Sequelize = require('sequelize');
 const User = require("../db").User;
 const Ingredient = require('../db').Ingredient;
 const Restriction = require('../db').Restriction;
+const decodeUserToken = require("../services/decodeUserToken");
+const getUserRestrictionsService = require("../services/getUserRestrictionsService");
 
 require("dotenv").config({ path: ".env.local", override: true });
 
 async function getUserRestrictions(req, res) {
+
   const { userId } = req.params;
 
   try {
@@ -22,7 +25,13 @@ async function getUserRestrictions(req, res) {
 }
 
 async function addUserRestrictions(req, res) {
-  const { userId, restriction } = req.body;
+
+  console.log(req.cookies.token);
+  const userId = await decodeUserToken(req.cookies.token);
+
+  console.log(userId);
+
+  const { restriction } = req.body;
 
   try {
     const user = await User.findByPk(userId);
@@ -44,7 +53,12 @@ async function addUserRestrictions(req, res) {
 }
 
 async function deleteUserRestrictions(req, res) {
-  const { userId, restrictionId } = req.params;
+  console.log(req.cookies.token);
+  const userId = await decodeUserToken(req.cookies.token);
+
+  console.log(userId);
+
+  const { restrictionId } = req.params;
 
   try {
     const user = await User.findByPk(userId);
