@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import '@css/SearchBar.css';
 import RecipeList from './RecipeList';
-import { getUserIdFromToken } from '@services/getUserId';
 const env = import.meta.env;
 
 const RecipeSearchBar = ({ onSearch }) => {
@@ -9,6 +8,7 @@ const RecipeSearchBar = ({ onSearch }) => {
     const [isListening, setIsListening] = useState(false);
     const [error, setError] = useState(null);
     const [recipes, setRecipes] = useState([]);;
+    const speechRecognition = useMemo(() => new window.webkitSpeechRecognition(), []);
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -69,38 +69,56 @@ const RecipeSearchBar = ({ onSearch }) => {
         }
     };
 
-    const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'fr-FR';
+    useEffect(() => {
+        speechRecognition.lang = 'fr-FR';
+        speechRecognition.interimResults = true;
 
-    recognition.onresult = (event) => {
-        // const searchValue = event.results[0][0].transcript;
-        // setSearchTerm(searchValue);
-        let searchValue = event.results[0][0].transcript;
-        searchValue = searchValue.trim().replace(/\.$/, '');
-        setSearchTerm(searchValue);
-        handleVocalSearch(searchValue);
-    };
+        const onResult = (event) => {
+            setSearchTerm(event.results[event.resultIndex][0].transcript);
+        };
 
-    recognition.onstart = () => {
+        speechRecognition.addEventListener('result', onResult);
+
+        return () => {
+            speechRecognition.removeEventListener('result', onResult);
+        };
+    }, [speechRecognition]);
+
+    // recognition.onresult = (event) => {
+    //     // const searchValue = event.results[0][0].transcript;
+    //     // setSearchTerm(searchValue);
+    //     let searchValue = event.results[0][0].transcript;
+    //     searchValue = searchValue.trim().replace(/\.$/, '');
+    //     setSearchTerm(searchValue);
+    //     handleVocalSearch(searchValue);
+    // };
+
+    useEffect(() => {
+        if (isListening) {
+            setSearchTerm('');
+            speechRecognition.start();
+        } else {
+            speechRecognition.stop();
+        }
+    }, [isListening, speechRecognition]);
+
+    // recognition.onstart = () => {
+    //     setIsListening(true);
+    // };
+
+    // recognition.onend = () => {
+    //     setIsListening(false);
+    // };
+
+    const startListening = useCallback(() => {
         setIsListening(true);
-    };
+    }, []);
 
-    recognition.onend = () => {
+    const stopListening = useCallback(() => {
         setIsListening(false);
-    };
+    }, []);
 
-    const startListening = () => {
-        recognition.start();
-    };
-
-    const stopListening = () => {
-        recognition.stop();
-        // setIsListening(false);
-    };
-
-    recognition.onerror = (event) => {
+    speechRecognition.onerror = (event) => {
         if (event.error === 'not-allowed') {
             setError('L\'accès au microphone a été refusé. Vous ne pouvez pas utiliser la reconnaissance vocale sans autoriser votre navigateur.');
         } else {
