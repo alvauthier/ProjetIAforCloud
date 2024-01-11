@@ -238,5 +238,670 @@
             "ingredientId": 25,
             "recipeId": 5
         }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 14,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 4,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 360,
+            "ingredientId": 26,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 7,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 10,
+            "ingredientId": 18,
+            "recipeId": 6
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 14,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 20,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 4,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 3,
+            "ingredientId": 9,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 600,
+            "ingredientId": 27,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 28,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 10,
+            "ingredientId": 19,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 25,
+            "ingredientId": 18,
+            "recipeId": 7
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 100,
+            "ingredientId": 31,
+            "recipeId": 8
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 30,
+            "recipeId": 8
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 25,
+            "ingredientId": 29,
+            "recipeId": 8
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 100,
+            "ingredientId": 31,
+            "recipeId": 8
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 300,
+            "ingredientId": 32,
+            "recipeId": 8
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 600,
+            "ingredientId": 33,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 31,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 14,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 21,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 150,
+            "ingredientId": 7,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 10,
+            "ingredientId": 18,
+            "recipeId": 9
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 400,
+            "ingredientId": 34,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 10,
+            "ingredientId": 35,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 6,
+            "ingredientId": 14,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 36,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 4,
+            "ingredientId": 5,
+            "recipeId": 10
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1000,
+            "ingredientId": 37,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 14,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 100,
+            "ingredientId": 40,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 250,
+            "ingredientId": 41,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 200,
+            "ingredientId": 38,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 150,
+            "ingredientId": 39,
+            "recipeId": 11
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 400,
+            "ingredientId": 42,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 43,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 75,
+            "ingredientId": 40,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 14,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 10,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 75,
+            "ingredientId": 7,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 5,
+            "recipeId": 12
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 10,
+            "ingredientId": 48,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 14,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 4,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 25,
+            "ingredientId": 21,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 44,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 45,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 46,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 30,
+            "ingredientId": 47,
+            "recipeId": 13
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 8,
+            "ingredientId": 14,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 400,
+            "ingredientId": 49,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 6,
+            "ingredientId": 30,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 5,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 19,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 6,
+            "ingredientId": 50,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 51,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 8,
+            "ingredientId": 52,
+            "recipeId": 14
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 53,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 150,
+            "ingredientId": 3,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 400,
+            "ingredientId": 54,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 1,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 3,
+            "ingredientId": 55,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 100,
+            "ingredientId": 56,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 15
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 15
+        }
     }
+    
 ]

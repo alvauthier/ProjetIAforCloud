@@ -48,5 +48,106 @@
             "image" : "",
             "instructions": "Etape 1 : Préchauffer le four à 180°C (thermostat 6). Etape 2 : Mélanger tous les ingrédients ensemble, sauf le rôti et les rondelles d'oignons. Etape 3 : Badigeonner le rôti de cette sauce et le coucher sur les oignons. Rectifier l'assaisonnement si besoin. Etape 4 : Ajouter le bouillon, couvrir le rôti et mettre au four pendant environ 1h30. Etape 5 : Pour vérifier la cuisson, piquer avec un cure-dent. S'il pénètre facilement, le rôti est à point."
         }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 6,
+            "name": "Pavés de saumon au four",
+            "description": "Un poisson simple et savoureux.",
+            "image" : "",
+            "instructions": "Etape 1 : Mettre les pavés de saumon dans un plat allant au four. Etape 2 : DCouper un citron en 2 et le presser sur les pavés. Couper le demi-citron restant en rondelles et les déposer directement sur le saumon. Etape 3 : Ciseler les petits oignons ainsi que le 'vert' puis les mettre sur les pavés. Etape 4 : Verser le vin blanc et un filet d'huile d'olive sur les saumons, saler (très peu), poivrer et faire cuire à 180°, thermostat 6, pendant environ 25 min."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 7,
+            "name": "Bar au four",
+            "description": "Un poisson gourmand avec son jus.",
+            "image" : "",
+            "instructions": "Etape 1 : Préchauffer le four à 180°C (thermostat 6). Huiler un plat à four rectangulaire dont la diagonale correspond à la taille du poisson. Disposer sur cette diagonale la moitié du citron coupé en rondelles, poser le poisson dessus après lui avoir rempli le ventre de thym et laurier. Répartir le reste des tranches de citron sur le poisson. Etape 2 : De part et d'autre du poisson, mettre l'oignon en rondelles et les tomates coupées en deux, face bombée vers le dessus. Etape 3 : Saler, poivrer et arroser d'un filet d'huile d'olive.  Etape 4 : Enfourner pour 10 mn, puis arroser avec le vin blanc et poursuivre la cuisson 10-15 mn.  Etape 5 : Répartir le poisson, les tomates et oignons dans des assiettes chaudes, arroser du jus de cuisson."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 8,
+            "name": "Fish and Chips",
+            "description": "La vrai pate a frire a l'anglaise.",
+            "image" : "",
+            "instructions": "Etape 1 : Mélangez la farine et la bière. Etape 2 : Ajoutez les jaunes d'oeufs. Etape 3 : Puis les blancs d'oeuf monté en neige ferme. Etape 4 : Trempez les filets de poisson généreusement dans la pate. Etape 5 : Faites frire à 160°C ou 180°C pendant 3 ou 4 min. Etape 6 : Egoutter soigneusement lorsque c'est doré."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 9,
+            "name": "Sole meuniere",
+            "description": "A servir avec des pommes de terre vapeur et une salade verte.",
+            "image" : "",
+            "instructions": "Etape 1 : Enlever la peau brune des soles. Etape 2 : Dans un plat, fariner la sole, salée et poivrée, des deux côtés. Etape 3 : Dans une poèle ovale si possible pour la forme du poisson, mettre l'huile à chauffer, vérifier la chaleur en posant la queue du poisson uniquement et commencer la cuisson. Etape 4 : Quand la face est dorée, régler la force du gaz et retourner la sole. Etape 5 : Réserver la sole et dégraisser, replacer sur le gaz et ajouter le beurre, ajouter la sole et conduire la cuisson pour avoir le beurre noisette et non brûlé. Etape 6 : Déglacer avec le jus du citron, le beurre forme alors de grosses bulles c'est cela la bonne meunière. Dresser aussitôt et servir."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 10,
+            "name": "Crevettes à l'ail",
+            "description": "Des crevettes relever et forte en saveur",
+            "image" : "",
+            "instructions": "Etape 1 :Lavez et essuyez les crevettes. Faites chauffer 4 cuillères à soupe d'huile dans 1 grande poêle. Ajoutez les crevettes et faites les cuire 5 mn de chaque côté puis sortez les de la poêle. Etape 2 : Passez l'ail au mixeur, le persil et le piment doux. Etape 3 : Dans la poêle, versez le reste de d'huile puis ajoutez l'ail, le persil et le piment. Remuez bien, pour que l'ail soit cuit mais non brûlé. Etape 4 : Remettez les crevettes à chauffer. Salez, poivrez et servez chaud."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 11,
+            "name": "Salade de pâtes à la tunisienne",
+            "description": "Une salade rafraîchissante et complete.",
+            "image" : "",
+            "instructions": "Etape 1 : Faire bouillir 1L d'eau salée. Y plonger les pâtes et cuire selon le temps indiqué sur le paquet. Etape 2 : Égoutter les pâtes. Une fois refroidies, les mettre dans un grand saladier. Etape 3 : Découper les tomates séchées en lamelles avant de les ajouter dans le saladier. Etape 4 : Ajouter ensuite l'huile d'olive, la feta, les raisin secs ainsi que la coriandre. C'est prêt !"
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 12,
+            "name": "Salade de pois chiches",
+            "description": "Une salade fraiches.",
+            "image" : "",
+            "instructions": "Etape 1 : Égoutter les pois chiches et les rincer. Etape 2 : Couper le poivron en petits dés et le mélanger aux pois chiches. Etape 3 : Assaisonner avec le citron, l'huile d'olive, l'ail écrasé, le sel, beaucoup de poivre. Etape 4 : Ajouter la coriandre fraîche (ou du persil plat) et le concombre, coupé en petits dés"
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 13,
+            "name": "Chou-fleur rôti sucré salé",
+            "description": "Une recette sucré salé rapide et bonne.",
+            "image" : "",
+            "instructions": "Etape 1 :Préchauffer le four à 220°C (thermostat 7-8). Placer dans le four le plat de cuisson pour le préchauffer également. Etape 2 : Enlever les grosses 1ères feuilles du chou fleur, la base et le laver. Le faire bouillir dans l'eau salée pendant 8 min. A mi-cuisson, le retourner pour avoir une cuisson uniforme. Ajouter du poivre et des herbes de Provence dans l’eau pour parfumer. Etape 3 : Pendant ce temps là, infuser les herbes de Provence dans du beurre de cuisson. Etape 4 : Disposer le chou-fleur dans le plat à four chaud et verser le beurre infusé d'herbes de Provence sur le chou-fleur. Saler, poivrer. Enfourner pendant 12 minutes. Etape 5 : Pendant que le chou fleur est au four, on passe au sucré salé... Faire poêler les oignons émincés dans de l’huile d’olive, ajouter les amandes puis les pruneaux et rajouter un peu de beurre. Etape 6 : Déglacer en rajoutant un peu d’eau dans la poêle. Ajouter la roquette par dessus et laisser réchauffer quelques instants. Etape 7 : Pour le dressage commencer par dresser le sucré salé. Sortir le chou fleur du four et le déposer sur le sucré salé."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 14,
+            "name": "Riz sauté à la sauce soja et omelette",
+            "description": "Un riz au saveur asiatique.",
+            "image" : "",
+            "instructions": "Etape 1 : Mettez à cuire votre riz dans l’autocuiseur ou selon votre mode de cuisson habituel. Etape 2 : Pendant ce temps, hachez finement la ciboule, réservez. Etape 3 : Dans un bol, préparez l’omelette en fouettant les oeufs. Ajoutez l'eau, le glutamate, le nuoc mam et le poivre. Mélangez bien. Etape 4 : Cuire le mélange dans une poêle avec les cuillères à soupe d’huile. L’omelette doit être moelleuse, la cuisson ne doit pas excéder 3 minutes. Etape 5 : Coupez en petits morceaux l’omelette, réservez. Etape 6 : Dans un petit pot, mélangez l’ail en poudre avec la sauce soja claire et la sauce soja foncée, réservez. Etape 7 : Dans un wok ou une poêle creuse chauffée à feu vif, mettez à chauffer 5 cuillères à soupe d’huile. Faites-y revenir le riz chaud, ajoutez le mélange sauce soja et ail, mélangez rapidement afin que le riz se teinte de brun (environ 2 minutes), coupez le feu. Etape 8 : Ajoutez l’omelette en morceaux et la ciboule hachée, mélangez bien, servez aussitôt."
+        }
+    },
+    {
+        "model": "Recipe",
+        "data": {
+            "id": 15,
+            "name": "Quiche brocolis-fromage frais",
+            "description": "Un plat rapide et gourmand.",
+            "image" : "",
+            "instructions": "Etape 1 : Préchauffer votre four à 180° thermostat 6. Etape 2 : Battre les œufs, la crème, et le fromage frais dans un saladier. Etape 3 : Ajouter le jambon coupé en dés. Saler, poivrer. Etape 4 : Etaler la pâte dans un moule recouvert de papier sulfurisé. Etape 5 : Répartissez les fleurons de brocolis sur la pâte. Etape 6 : Enfourner dans un four préchauffer à 180°C pendant 30 minutes."
+        }
     }
+  
 ]

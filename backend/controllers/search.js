@@ -36,7 +36,7 @@ async function search(req, res) {
       messages: [
           {
               role: "system",
-              content: "Je vais te donner mes recettes stockées dans ma base de données. J'aimerais que tu renvoies les meilleures suggestions possibles avec uniquement le contenu de ma base basées sur la demande de l'utilisateur qui te sera envoyée. Répond juste avec un JSON des ID des recettes classés dans l'ordre de pertinence avec Recettes comme clé, juste ça et rien d'autre. Contenu de la base de données : "+JSON.stringify(recipes)+"Prends en compte les restrictions alimentaires de l'utilisateur pour ne surtout pas inclure un ingrédient interdit dans la recette.",
+              content: "Je vais te donner mes recettes stockées dans ma base de données. J'aimerais que tu renvoies les meilleures suggestions possibles avec uniquement le contenu de ma base basées sur la demande de l'utilisateur qui te sera envoyée. Répond juste avec un JSON des ID des recettes classés dans l'ordre de pertinence avec Recettes comme clé, juste ça et rien d'autre. Contenu de la base de données : "+JSON.stringify(recipes),
           },
           {
               role: "user",
