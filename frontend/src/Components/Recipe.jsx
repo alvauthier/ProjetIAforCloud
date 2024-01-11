@@ -52,7 +52,7 @@ function Recipe() {
 
                         <div>
                             <h4>Ingrédients</h4>
-                            <div>{recipeDetails.Ingredients.map((ingredient) => { return <div key={ingredient.name}>{ingredient.name} {ingredient.IngredientRecipe.quantity}{ingredient.unit}</div>})}</div>
+                            <div>{recipeDetails.Ingredients.map((ingredient) => { return <div key={ingredient.name}>{ingredient.IngredientRecipe.quantity} {ingredient.unit} {ingredient.name}</div>})}</div>
                         </div>
                     </div>
 
