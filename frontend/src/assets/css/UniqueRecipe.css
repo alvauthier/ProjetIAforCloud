@@ -1,0 +1,22 @@
+.uniqueRecipeLayout {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 3%;
+    padding: 0 5%;
+    gap: 1%;
+}
+
+.uniqueRecipeLayout_left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+    grid-column: 1;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.uniqueRecipeLayout_right-col {
+    grid-column: 2/3;
+    border: 1px solid black;
+    border-radius: 20px;
+}
