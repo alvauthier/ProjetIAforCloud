@@ -7,6 +7,8 @@ function Recipe() {
     const [recipeDetails, setRecipeDetails] = useState({
         Ingredients: []
     })
+    const [similarRecepes, setSimilarRecepes] = useState(null)
+
     let { id } = useParams()
 
     useEffect(() => {
@@ -56,9 +58,14 @@ function Recipe() {
 
 
 
-                    <div className="uniqueRecipeLayout_right-col">
+                    <div className="uniqueRecipeLayout_middle-col">
                         <h2>Instructions</h2>
                         <div>{recipeDetails.instructions}</div>
+                    </div>
+
+                    <div className="uniqueRecipeLayout_right-col">
+                        <h4>Recettes similaires</h4>
+                        <div>{similarRecepes !== null ? similarRecepes.map(simRec => {return <div>{simRec}.name</div>}) : <div>Pas de recettes similaires</div>}</div>
                     </div>
                 </div>
 
