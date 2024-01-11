@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import '@css/SearchBar.css';
 import RecipeList from './RecipeList';
 const env = import.meta.env;
@@ -7,7 +7,8 @@ const RecipeSearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isListening, setIsListening] = useState(false);
     const [error, setError] = useState(null);
-    const [recipes, setRecipes] = useState([]);
+    const [recipes, setRecipes] = useState([]);;
+    const speechRecognition = useMemo(() => new window.webkitSpeechRecognition(), []);
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -17,10 +18,17 @@ const RecipeSearchBar = ({ onSearch }) => {
         console.log('Recherche de la recette :', searchTerm);
         await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ searchTerm }),
+            body: JSON.stringify({ 
+                searchTerm,
+            }),
+            // body: JSON.stringify({
+            //     userId,
+            //     restrictionId: restrictionId,
+            // }),
             })
             .then(response => response.json())
             .then(data => {
@@ -39,6 +47,7 @@ const RecipeSearchBar = ({ onSearch }) => {
         console.log('Recherche de la recette :', searchValue);
         await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -60,37 +69,56 @@ const RecipeSearchBar = ({ onSearch }) => {
         }
     };
 
-    const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'fr-FR';
+    useEffect(() => {
+        speechRecognition.lang = 'fr-FR';
+        speechRecognition.interimResults = true;
 
-    recognition.onresult = (event) => {
-        // const searchValue = event.results[0][0].transcript;
-        // setSearchTerm(searchValue);
-        let searchValue = event.results[0][0].transcript;
-        searchValue = searchValue.trim().replace(/\.$/, '');
-        setSearchTerm(searchValue);
-        handleVocalSearch(searchValue);
-    };
+        const onResult = (event) => {
+            setSearchTerm(event.results[event.resultIndex][0].transcript);
+        };
 
-    recognition.onstart = () => {
+        speechRecognition.addEventListener('result', onResult);
+
+        return () => {
+            speechRecognition.removeEventListener('result', onResult);
+        };
+    }, [speechRecognition]);
+
+    // recognition.onresult = (event) => {
+    //     // const searchValue = event.results[0][0].transcript;
+    //     // setSearchTerm(searchValue);
+    //     let searchValue = event.results[0][0].transcript;
+    //     searchValue = searchValue.trim().replace(/\.$/, '');
+    //     setSearchTerm(searchValue);
+    //     handleVocalSearch(searchValue);
+    // };
+
+    useEffect(() => {
+        if (isListening) {
+            setSearchTerm('');
+            speechRecognition.start();
+        } else {
+            speechRecognition.stop();
+        }
+    }, [isListening, speechRecognition]);
+
+    // recognition.onstart = () => {
+    //     setIsListening(true);
+    // };
+
+    // recognition.onend = () => {
+    //     setIsListening(false);
+    // };
+
+    const startListening = useCallback(() => {
         setIsListening(true);
-    };
+    }, []);
 
-    recognition.onend = () => {
+    const stopListening = useCallback(() => {
         setIsListening(false);
-    };
+    }, []);
 
-    const startListening = () => {
-        recognition.start();
-    };
-
-    const stopListening = () => {
-        recognition.stop();
-    };
-
-    recognition.onerror = (event) => {
+    speechRecognition.onerror = (event) => {
         if (event.error === 'not-allowed') {
             setError('L\'accès au microphone a été refusé. Vous ne pouvez pas utiliser la reconnaissance vocale sans autoriser votre navigateur.');
         } else {
