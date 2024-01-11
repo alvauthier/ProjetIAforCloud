@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 const env = import.meta.env;
 import "@css/UniqueRecipe.css"
 
@@ -10,12 +10,7 @@ function Recipe() {
     const [similarRecepes, setSimilarRecepes] = useState({
         Recettes: []
     })
-    let navigate = useNavigate()
-
-    function handleConsult(recipeId) {
-        navigate(`/recipe/${recipeId}`)
-        console.log("toto")
-    }
+    const  [reload, setReload] = useState(false)
 
     let { id } = useParams()
 
@@ -61,7 +56,7 @@ function Recipe() {
 
         fetchSimilarRecipe();
         fetchRecipeDetails();
-    }, []);
+    }, [reload]);
 
     return (
         <>
@@ -94,7 +89,13 @@ function Recipe() {
 
                     <div className="uniqueRecipeLayout_right-col">
                         <h3>Recettes similaires</h3>
-                        {similarRecepes ? similarRecepes.Recettes.map(simRec => { return <div key={simRec.id}><h4>{simRec.name}</h4><button onClick={() => handleConsult(simRec.id)}>Consulter la recette</button></div> }) : <div>Pas de recettes similaires</div>}
+                        {similarRecepes ?
+                            (similarRecepes.Recettes.map(
+                                simRec => {
+                                    return <div key={simRec.id}>
+                                        <Link className={"simRecipeLink"} to={`/recipe/${simRec.id}`} onClick={() => setReload(!reload)}><h4>{simRec.name}</h4></Link>
+                                        </div> }))
+                                : <div>Pas de recettes similaires</div>}
                     </div>
                 </div>
 
