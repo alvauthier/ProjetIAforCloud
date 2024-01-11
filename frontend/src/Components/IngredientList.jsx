@@ -9,9 +9,7 @@ const RecipeSearchBar = ({ onSearch }) => {
     };
 
     const handleSearch = async () => {
-        // Appeler la fonction onSearch avec le terme de recherche en argument
 
-    // Envoi du terme de recherche au backend avec fetch
     await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
         method: 'POST',
         headers: {
