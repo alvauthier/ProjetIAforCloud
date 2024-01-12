@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { FaTwitter, FaWhatsapp, FaRegEnvelope, FaRegClipboard } from 'react-icons/fa';
 import CommentAndRatingForm from './CommentAndRatingForm';
 const env = import.meta.env;
 import "@css/UniqueRecipe.css"
@@ -19,7 +20,8 @@ function Recipe() {
 
     const [comments, setComments] = useState([])
     const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [shoppingList, setShoppingList] = useState([]);
+    const [shoppingList, setShoppingList] = useState('');
+    const [isCopied, setIsCopied] = useState(false);
 
     let { id } = useParams()
 
@@ -210,6 +212,15 @@ function Recipe() {
         }
     }
 
+    async function copyToClipboard() {
+        try {
+            await navigator.clipboard.writeText(shoppingList);
+            setIsCopied(true);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    }
+
     return (
         <>
             <main>
@@ -286,8 +297,30 @@ function Recipe() {
 
                     {isPopupOpen && (
                         <div className="popup">
-                            <h2>Liste de courses</h2>
-                            <p>{shoppingList}</p>
+                            {shoppingList ? (
+                                <>
+                                    <h2>Liste de courses</h2>
+                                    <p>{shoppingList}</p>
+                                    <h3>Partager sur</h3>
+                                    {isCopied && <p>Contenu copié dans le presse-papiers !</p>}
+                                    <div>
+                                        <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shoppingList)}`} target="_blank" rel="noopener noreferrer">
+                                            <FaTwitter size={40} />
+                                        </a>
+                                        <a href={`https://wa.me/?text=${encodeURIComponent(shoppingList)}`} target="_blank" rel="noopener noreferrer">
+                                            <FaWhatsapp size={40} />
+                                        </a>
+                                        <a href={`mailto:?subject=Ma liste de courses&body=${encodeURIComponent(shoppingList)}`}>
+                                            <FaRegEnvelope size={40} />
+                                        </a>
+                                        <button onClick={copyToClipboard}>
+                                            <FaRegClipboard size={40} />
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <p>Chargement...</p>
+                            )}
                         </div>
                     )}
                 </div>
