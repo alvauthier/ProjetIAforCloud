@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { FaTwitter, FaWhatsapp, FaRegEnvelope, FaRegClipboard } from 'react-icons/fa';
+import { FaTwitter, FaWhatsapp, FaRegEnvelope, FaRegClipboard, FaHeart, FaRegHeart } from 'react-icons/fa';
 import CommentAndRatingForm from './CommentAndRatingForm';
 const env = import.meta.env;
 import "@css/UniqueRecipe.css"
@@ -226,7 +226,8 @@ function Recipe() {
             <main>
                 <h1>{recipeDetails.name}</h1>
                 <button onClick={handleFavoriteClick}>
-                    {isFavorited ? '❤️' : '🤍'}
+                    {/* {isFavorited ? '❤️' : '🤍'} */}
+                    {isFavorited ? <FaHeart style={{ color: 'red' }} size={25} /> : <FaRegHeart size={25} />}
                 </button>
                 <div className="uniqueRecipeLayout">
                     <div className="uniqueRecipeLayout_left-col">
