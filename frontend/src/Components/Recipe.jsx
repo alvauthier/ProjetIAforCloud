@@ -160,7 +160,7 @@ function Recipe() {
             }
         }
         checkIfFavorited();
-    }, []);
+    }, [reload]);
 
     async function fetchAccompanients() {
         const recipeId = id;
