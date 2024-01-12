@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {Link, useNavigate, useParams} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { FaTwitter, FaWhatsapp, FaRegEnvelope, FaRegClipboard } from 'react-icons/fa';
 import CommentAndRatingForm from './CommentAndRatingForm';
 const env = import.meta.env;
 import "@css/UniqueRecipe.css"
@@ -18,17 +19,20 @@ function Recipe() {
     const [isFavorited, setIsFavorited] = useState(false);
 
     const [comments, setComments] = useState([])
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [shoppingList, setShoppingList] = useState('');
+    const [isCopied, setIsCopied] = useState(false);
 
     let { id } = useParams()
 
     let nombreNote = recipeDetails.Reviews.length
     let note = 0
-    for(let i = 0; i < nombreNote; i++) {
+    for (let i = 0; i < nombreNote; i++) {
         note += parseInt(recipeDetails.Reviews[i].note)
     }
     note = note / nombreNote
 
-    const handleAddCommentAndRating =(newCommentAndRating) => {
+    const handleAddCommentAndRating = (newCommentAndRating) => {
         setComments([...comments, newCommentAndRating])
     }
 
@@ -76,7 +80,7 @@ function Recipe() {
         fetchRecipeDetails();
     }, [reload]);
 
-    console.log(recipeDetails.Ingredients.map(i=> {return i.IngredientRecipe.quantity}))
+    console.log(recipeDetails.Ingredients.map(i => { return i.IngredientRecipe.quantity }))
 
     const handleFavoriteClick = async () => {
         if (isFavorited) {
@@ -179,12 +183,50 @@ function Recipe() {
         })
     }
 
+    function openPopup() {
+        generateShoppingList();
+        setIsPopupOpen(true);
+    }
+
+    function closePopup() {
+        setIsPopupOpen(false);
+    }
+
+    async function generateShoppingList() {
+        const recipeId = id;
+        try {
+            const response = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/shopping/${recipeId}`, {
+                method: 'GET',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            if (!response.ok) {
+                throw new Error(`Réponse non valide: ${response.status}`);
+            }
+            const data = await response.json();
+            setShoppingList(data.responseAI);
+        } catch (error) {
+            console.error(`Erreur lors de la génération de la liste de courses pour la recette ${recipeId}:`, error);
+        }
+    }
+
+    async function copyToClipboard() {
+        try {
+            await navigator.clipboard.writeText(shoppingList);
+            setIsCopied(true);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    }
+
     return (
         <>
             <main>
                 <h1>{recipeDetails.name}</h1>
                 <button onClick={handleFavoriteClick}>
-                {isFavorited ? '❤️' : '🤍'}
+                    {isFavorited ? '❤️' : '🤍'}
                 </button>
                 <div className="uniqueRecipeLayout">
                     <div className="uniqueRecipeLayout_left-col">
@@ -195,12 +237,12 @@ function Recipe() {
 
                         <div>
                             <h4>Note</h4>
-                            {note} ⭐ 
+                            {note} ⭐
                         </div>
 
                         <div>
                             <h4>Ingrédients</h4>
-                            <div>{recipeDetails.Ingredients.map((ingredient) => { return <div key={ingredient.name}>{ingredient.IngredientRecipe.quantity} {ingredient.unit} {ingredient.name}</div>})}</div>
+                            <div>{recipeDetails.Ingredients.map((ingredient) => { return <div key={ingredient.name}>{ingredient.IngredientRecipe.quantity} {ingredient.unit} {ingredient.name}</div> })}</div>
                         </div>
                     </div>
 
@@ -216,7 +258,7 @@ function Recipe() {
                                 </div>
                             }
                         </div>
-                        </div>
+                    </div>
 
                     <div className="uniqueRecipeLayout_right-col">
                         <h3>Recettes similaires</h3>
@@ -225,24 +267,62 @@ function Recipe() {
                                 simRec => {
                                     return <div key={simRec.id}>
                                         <Link className={"simRecipeLink"} to={`/recipe/${simRec.id}`} onClick={() => setReload(!reload)}><h4>{simRec.name}</h4></Link>
-                                        </div> }))
-                                : <div>Pas de recettes similaires</div>}
+                                    </div>
+                                }))
+                            : <div>Pas de recettes similaires</div>}
                     </div>
                 </div>
                 <div>
                     <div className="">
                         <h4>Commentaires</h4>
-                        <div>{recipeDetails.Reviews.map((review) => { return <div key={review.id}>{review.review}</div>})}</div>
+                        <div>{recipeDetails.Reviews.map((review) => { return <div key={review.id}>{review.review}</div> })}</div>
                     </div>
                     <div className="">
                         <h4>Laisse un commentaire et une note</h4>
-                        <CommentAndRatingForm setReload={setReload} reload={reload}/>
+                        <CommentAndRatingForm setReload={setReload} reload={reload} />
                         {comments.map((comment) => {
                             <li key={index}>
-                               <p>Commentaire : {comment.comment}</p>
-                               <p>Note : {comment.rating}</p> 
-                            </li>})}
+                                <p>Commentaire : {comment.comment}</p>
+                                <p>Note : {comment.rating}</p>
+                            </li>
+                        })}
                     </div>
+                </div>
+                <div>
+                    {isPopupOpen ? (
+                        <button onClick={closePopup}>Fermer la liste de course</button>
+                    ) : (
+                        <button onClick={openPopup}>Générer la liste de courses</button>
+                    )}
+
+                    {isPopupOpen && (
+                        <div className="popup">
+                            {shoppingList ? (
+                                <>
+                                    <h2>Liste de courses</h2>
+                                    <p>{shoppingList}</p>
+                                    <h3>Partager sur</h3>
+                                    {isCopied && <p>Contenu copié dans le presse-papiers !</p>}
+                                    <div>
+                                        <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(shoppingList)}`} target="_blank" rel="noopener noreferrer">
+                                            <FaTwitter size={40} />
+                                        </a>
+                                        <a href={`https://wa.me/?text=${encodeURIComponent(shoppingList)}`} target="_blank" rel="noopener noreferrer">
+                                            <FaWhatsapp size={40} />
+                                        </a>
+                                        <a href={`mailto:?subject=Ma liste de courses&body=${encodeURIComponent(shoppingList)}`}>
+                                            <FaRegEnvelope size={40} />
+                                        </a>
+                                        <button onClick={copyToClipboard}>
+                                            <FaRegClipboard size={40} />
+                                        </button>
+                                    </div>
+                                </>
+                            ) : (
+                                <p>Chargement...</p>
+                            )}
+                        </div>
+                    )}
                 </div>
             </main>
         </>
