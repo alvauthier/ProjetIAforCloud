@@ -10,7 +10,9 @@ function Recipe() {
     const [similarRecepes, setSimilarRecepes] = useState({
         Recettes: []
     })
-    const  [reload, setReload] = useState(false)
+    const [reload, setReload] = useState(false)
+    const [accompaniments, setAccompaniments] = useState("")
+    const [displayAccompaniement, setDisplayAccompaniments] = useState(false)
 
     let { id } = useParams()
 
@@ -58,6 +60,27 @@ function Recipe() {
         fetchRecipeDetails();
     }, [reload]);
 
+    async function fetchAccompanients() {
+        const recipeId = id;
+        let detail = {}
+        await new Promise(async () => {
+            try {
+                const response = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/accompaniments/${recipeId}`, {})
+                    .then(response => response.json())
+                    .then(data => {
+                        const responseAI = data.responseAI;
+                        setAccompaniments(responseAI)
+                        setDisplayAccompaniments(!displayAccompaniement)
+                    })
+                if (!response.ok) {
+                    throw new Error(`Réponse non valide: ${response.status}`);
+                }
+            } catch (error) {
+                console.error(`Erreur lors de la récupération des détails de la recette ${recipeId}:`, error);
+            }
+        })
+    }
+
     return (
         <>
             <main>
@@ -85,7 +108,16 @@ function Recipe() {
                     <div className="uniqueRecipeLayout_middle-col">
                         <h2>Instructions</h2>
                         <div>{recipeDetails.instructions}</div>
-                    </div>
+                        <div className="uniqueRecipe_accompaniment">
+                            <button onClick={() => fetchAccompanients()}>{displayAccompaniement ? "Cacher" : "Afficher"} accompagnement</button>
+                            {displayAccompaniement &&
+                                <div className="uniqueRecipe_accompaniment">
+                                    <h4>Accompagnement</h4>
+                                    {accompaniments && accompaniments}
+                                </div>
+                            }
+                        </div>
+                        </div>
 
                     <div className="uniqueRecipeLayout_right-col">
                         <h3>Recettes similaires</h3>

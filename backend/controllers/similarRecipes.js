@@ -15,7 +15,6 @@ const myopenai = new openai({
 
 async function getSimilarRecipes(req, res) {
     const { recipeId } = req.params;
-    console.log("toto")
     try {
         // const userId = await decodeUserToken(req.cookies.token);
         //
