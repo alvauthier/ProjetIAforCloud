@@ -7,7 +7,13 @@ const RecipeSearchBar = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [isListening, setIsListening] = useState(false);
     const [error, setError] = useState(null);
-    const [recipes, setRecipes] = useState([]);;
+    const [recipes, setRecipes] = useState([]);
+
+    const [preferSeasonal, setPreferSeasonal] = useState(false);
+
+    const handleCheckboxChange = (event) => {
+        setPreferSeasonal(event.target.checked);
+    };
 
     const isSpeechRecognitionSupported = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
 
@@ -38,6 +44,7 @@ const RecipeSearchBar = ({ onSearch }) => {
             },
             body: JSON.stringify({ 
                 searchTerm,
+                useSeason: preferSeasonal,
             }),
             // body: JSON.stringify({
             //     userId,
@@ -77,7 +84,10 @@ const RecipeSearchBar = ({ onSearch }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ searchTerm: searchValue }),
+            body: JSON.stringify({ 
+                searchTerm: searchValue,
+                useSeason: preferSeasonal,
+            }),
             })
             .then(response => response.json())
             .then(data => {
@@ -176,6 +186,12 @@ const RecipeSearchBar = ({ onSearch }) => {
             onKeyDown={handleKeyPress}
         />
         <button onClick={handleSearch}>Rechercher</button>
+        <input
+            type="checkbox"
+            checked={preferSeasonal}
+            onChange={handleCheckboxChange}
+        />
+        <label>Préférer les ingrédients de saison</label>
         {isListening ? (
                 <div>
                     <p className="microphone-button">Le micro est actuellement utilisé et le site vous écoute...</p>
