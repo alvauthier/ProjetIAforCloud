@@ -8,12 +8,19 @@ const searchRoutes = require('./routes/search');
 const ingredientsRoutes = require('./routes/ingredients');
 const restrictionsRoutes = require('./routes/restrictions');
 const recipesRoutes = require('./routes/recipes');
+const uniqueRecipesRoutes = require('./routes/uniqueRecipe');
+const similarRecipesRoutes = require('./routes/similarRecipes');
+const accompanimentsRoutes = require('./routes/accompaniments');
+const favoritesRoutes = require('./routes/favorites');
 const errorsHandler = require("./middleware/errorsHandler");
+const reviewsRoutes = require('./routes/reviews');
+const shoppingRoutes = require('./routes/shopping');
 
 
 
 const app = express();
-const sequelize = require('sequelize')
+const sequelize = require('sequelize');
+const review = require('./db/models/review');
 
 // Use to allow cross-origin requests
 app.use(cors({
@@ -32,6 +39,12 @@ app.use("/search", searchRoutes)
 app.use("/ingredients", ingredientsRoutes)
 app.use("/restrictions", restrictionsRoutes)
 app.use("/recipes", recipesRoutes)
+app.use("/uniqueRecipe", uniqueRecipesRoutes)
+app.use("/similarRecipe", similarRecipesRoutes)
+app.use("/accompaniments", accompanimentsRoutes)
+app.use("/favorites", favoritesRoutes)
+app.use("/reviews", reviewsRoutes)
+app.use("/shopping", shoppingRoutes)
 
 app.use(errorsHandler);
 

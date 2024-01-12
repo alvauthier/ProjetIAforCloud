@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import '@css/SearchBar.css';
 import RecipeList from './RecipeList';
 const env = import.meta.env;
@@ -9,6 +9,27 @@ const RecipeSearchBar = ({ onSearch }) => {
     const [error, setError] = useState(null);
     const [recipes, setRecipes] = useState([]);
 
+    const [preferSeasonal, setPreferSeasonal] = useState(false);
+
+    const handleCheckboxChange = (event) => {
+        setPreferSeasonal(event.target.checked);
+    };
+
+    const isSpeechRecognitionSupported = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
+
+    const speechRecognition = useMemo(() => {
+        if (isSpeechRecognitionSupported) {
+            const recognition = new window.webkitSpeechRecognition();
+            recognition.lang = 'fr-FR';
+            recognition.interimResults = true;
+            return recognition;
+        } else {
+            return null;
+        }
+    }, [isSpeechRecognitionSupported]);
+
+    // const speechRecognition = useMemo(() => new window.webkitSpeechRecognition(), []);
+
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
     };
@@ -17,10 +38,18 @@ const RecipeSearchBar = ({ onSearch }) => {
         console.log('Recherche de la recette :', searchTerm);
         await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ searchTerm }),
+            body: JSON.stringify({ 
+                searchTerm,
+                useSeason: preferSeasonal,
+            }),
+            // body: JSON.stringify({
+            //     userId,
+            //     restrictionId: restrictionId,
+            // }),
             })
             .then(response => response.json())
             .then(data => {
@@ -35,14 +64,30 @@ const RecipeSearchBar = ({ onSearch }) => {
         );
     };
 
+    const handleVocalButtonClick = () => {
+        if (isSpeechRecognitionSupported) {
+            if (isListening) {
+                stopListening();
+            } else {
+                startListening();
+            }
+        } else {
+            alert('La reconnaissance vocale n\'est pas supportée par votre navigateur.');
+        }
+    };
+
     const handleVocalSearch = async (searchValue) => {
         console.log('Recherche de la recette :', searchValue);
         await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/search`, {
             method: 'POST',
+            credentials: 'include',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ searchTerm: searchValue }),
+            body: JSON.stringify({ 
+                searchTerm: searchValue,
+                useSeason: preferSeasonal,
+            }),
             })
             .then(response => response.json())
             .then(data => {
@@ -60,47 +105,76 @@ const RecipeSearchBar = ({ onSearch }) => {
         }
     };
 
-    const SpeechRecognition =
-        window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'fr-FR';
+    useEffect(() => {
+        // speechRecognition.lang = 'fr-FR';
+        // speechRecognition.interimResults = true;
 
-    recognition.onresult = (event) => {
-        // const searchValue = event.results[0][0].transcript;
-        // setSearchTerm(searchValue);
-        let searchValue = event.results[0][0].transcript;
-        searchValue = searchValue.trim().replace(/\.$/, '');
-        setSearchTerm(searchValue);
-        handleVocalSearch(searchValue);
-    };
+        const onResult = (event) => {
+            setSearchTerm(event.results[event.resultIndex][0].transcript);
+        };
 
-    recognition.onstart = () => {
-        setIsListening(true);
-    };
-
-    recognition.onend = () => {
-        setIsListening(false);
-    };
-
-    const startListening = () => {
-        recognition.start();
-    };
-
-    const stopListening = () => {
-        recognition.stop();
-    };
-
-    recognition.onerror = (event) => {
-        if (event.error === 'not-allowed') {
-            setError('L\'accès au microphone a été refusé. Vous ne pouvez pas utiliser la reconnaissance vocale sans autoriser votre navigateur.');
-        } else {
-            setError('Une erreur s\'est produite lors de la reconnaissance vocale.');
+        if (speechRecognition !== null) {
+            speechRecognition.addEventListener('result', onResult);
         }
-    };
+        // speechRecognition.addEventListener('result', onResult);
 
-    const handlePermissionReset = () => {
-        alert('Pour réinitialiser les autorisations du microphone, allez dans les paramètres de votre navigateur, recherchez les paramètres de confidentialité ou de contenu, puis réinitialisez les autorisations du microphone pour ce site.');
-    };
+        return () => {
+            // speechRecognition.removeEventListener('result', onResult);
+            if (speechRecognition !== null) {
+                speechRecognition.removeEventListener('result', onResult);
+            }
+        };
+    }, [speechRecognition]);
+
+    // recognition.onresult = (event) => {
+    //     // const searchValue = event.results[0][0].transcript;
+    //     // setSearchTerm(searchValue);
+    //     let searchValue = event.results[0][0].transcript;
+    //     searchValue = searchValue.trim().replace(/\.$/, '');
+    //     setSearchTerm(searchValue);
+    //     handleVocalSearch(searchValue);
+    // };
+
+    useEffect(() => {
+        if (isListening) {
+            setSearchTerm('');
+            if (speechRecognition !== null) {
+                speechRecognition.start();
+            }
+        } else {
+            if (speechRecognition !== null) {
+                speechRecognition.stop();
+            }
+        }
+    }, [isListening, speechRecognition]);
+
+    // recognition.onstart = () => {
+    //     setIsListening(true);
+    // };
+
+    // recognition.onend = () => {
+    //     setIsListening(false);
+    // };
+
+    const startListening = useCallback(() => {
+        setIsListening(true);
+    }, []);
+
+    const stopListening = useCallback(() => {
+        setIsListening(false);
+    }, []);
+
+    // speechRecognition.onerror = (event) => {
+    //     if (event.error === 'not-allowed') {
+    //         setError('L\'accès au microphone a été refusé. Vous ne pouvez pas utiliser la reconnaissance vocale sans autoriser votre navigateur.');
+    //     } else {
+    //         setError('Une erreur s\'est produite lors de la reconnaissance vocale.');
+    //     }
+    // };
+
+    // const handlePermissionReset = () => {
+    //     alert('Pour réinitialiser les autorisations du microphone, allez dans les paramètres de votre navigateur, recherchez les paramètres de confidentialité ou de contenu, puis réinitialisez les autorisations du microphone pour ce site.');
+    // };
 
     return (
         <div className="recipe-search-bar">
@@ -112,20 +186,26 @@ const RecipeSearchBar = ({ onSearch }) => {
             onKeyDown={handleKeyPress}
         />
         <button onClick={handleSearch}>Rechercher</button>
+        <input
+            type="checkbox"
+            checked={preferSeasonal}
+            onChange={handleCheckboxChange}
+        />
+        <label>Préférer les ingrédients de saison</label>
         {isListening ? (
                 <div>
                     <p className="microphone-button">Le micro est actuellement utilisé et le site vous écoute...</p>
-                    <button onClick={stopListening}>&#9632; Arrêter la reconnaissance vocale</button>
+                    <button onClick={handleVocalButtonClick}>&#9632; Arrêter la reconnaissance vocale</button>
                 </div>
             ) : (
-                <button onClick={startListening}>&#127908; Démarrer la reconnaissance vocale</button>
+                <button onClick={handleVocalButtonClick}>&#127908; Démarrer la reconnaissance vocale</button>
             )}
-            {error && (
+            {/* {error && (
             <div>
                 <p>{error}</p>
                 <button onClick={handlePermissionReset}>Réinitialiser les autorisations du microphone</button>
             </div>
-        )}
+            )} */}
         <RecipeList recipes={recipes} />
         </div>
     );

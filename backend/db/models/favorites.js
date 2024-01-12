@@ -1,15 +1,11 @@
 module.exports = function (connection) {
     const { DataTypes, Model } = require("sequelize");
 
-    class IngredientRecipe extends Model {}
+    class Favorites extends Model {}
 
-    IngredientRecipe.init(
+    Favorites.init(
         {
-            quantity: {
-                type: DataTypes.DOUBLE,
-                allowNull: false,
-            },
-            ingredientId: {
+            userId: {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
@@ -19,10 +15,10 @@ module.exports = function (connection) {
             },
         },
         {
-            tableName: "ingredientRecipe",
+            tableName: "favorites",
             sequelize: connection,
         },
     );
 
-    return IngredientRecipe;
+    return Favorites;
 }

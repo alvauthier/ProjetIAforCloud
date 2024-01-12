@@ -4,10 +4,13 @@ const Sequelize = require('sequelize');
 const User = require("../db").User;
 const Ingredient = require('../db').Ingredient;
 const Restriction = require('../db').Restriction;
+const decodeUserToken = require("../services/decodeUserToken");
+const getUserRestrictionsService = require("../services/getUserRestrictionsService");
 
 require("dotenv").config({ path: ".env.local", override: true });
 
 async function getUserRestrictions(req, res) {
+
   const { userId } = req.params;
 
   try {
@@ -22,7 +25,13 @@ async function getUserRestrictions(req, res) {
 }
 
 async function addUserRestrictions(req, res) {
-  const { userId, restriction } = req.body;
+
+  console.log(req.cookies.token);
+  const userId = await decodeUserToken(req.cookies.token);
+
+  console.log(userId);
+
+  const { restriction } = req.body;
 
   try {
     const user = await User.findByPk(userId);
@@ -43,35 +52,38 @@ async function addUserRestrictions(req, res) {
   }
 }
 
-// async function deleteUserRestrictions(req, res) {
-//   console.log('-- Fonction deleteUserRestrictions --');
-//   const { userId, ingredientNames } = req.body;
+async function deleteUserRestrictions(req, res) {
+  console.log(req.cookies.token);
+  const userId = await decodeUserToken(req.cookies.token);
 
-//   try {
-//     console.log('Suppression des restrictions de l\'utilisateur', userId, 'pour les ingrédients', ingredientNames)
-//     // Trouver les ingredientId correspondants
-//     const ingredients = await Ingredient.findAll({
-//       where: { name: ingredientNames },
-//     });
+  console.log(userId);
 
-//     const ingredientIds = ingredients.map((ingredient) => ingredient.id);
+  const { restrictionId } = req.params;
 
-//     // Supprimer les restrictions correspondantes
-//     await Restriction.destroy({
-//       where: {
-//         userId,
-//         ingredientId: ingredientIds,
-//       },
-//     });
+  try {
+    const user = await User.findByPk(userId);
 
-//     res.json({ message: 'Restrictions supprimées avec succès' });
-//   } catch (error) {
-//     res.status(500).json({ error: 'Erreur lors de la suppression des restrictions' });
-//   }
-// }
+    if (!user) {
+      return res.status(404).json({ error: 'Utilisateur non trouvé' });
+    }
+
+    const restriction = await Restriction.findByPk(restrictionId);
+
+    if (!restriction) {
+      return res.status(404).json({ error: 'Restriction non trouvée' });
+    }
+
+    await restriction.destroy();
+
+    res.json({ message: 'Restriction supprimée avec succès' });
+  } catch (error) {
+    console.error('Erreur lors de la suppression de la restriction:', error);
+    res.status(500).json({ error: 'Erreur serveur' });
+  }
+}
 
 module.exports = {
   getUserRestrictions,
   addUserRestrictions,
-  // deleteUserRestrictions,
+  deleteUserRestrictions,
 };

@@ -1,6 +1,7 @@
 const connection = require("./db");
 const fs = require("fs");
 const path = require("path");
+const favorites = require("./models/favorites");
 
 const db = {connection};
 
@@ -19,8 +20,9 @@ const Fridge = db.Fridge;
 const FridgeContent = db.FridgeContent;
 const IngredientRecipe = db.IngredientRecipe;
 const Recipe = db.Recipe;
-const RecipeReview = db.RecipeReview;
+const Review = db.Review;
 const Restriction = db.Restriction;
+const Favorites = db.Favorites;
 
 User.hasMany(Restriction, {
   foreignKey: "userId",
@@ -30,19 +32,35 @@ Restriction.belongsTo(User, {
   foreignKey: "userId",
 });
 
-User.hasMany(RecipeReview, {
+User.hasMany(Review, {
   foreignKey: "userId",
 });
 
-RecipeReview.belongsTo(User, {
+Review.belongsTo(User, {
   foreignKey: "userId",
 });
 
-Recipe.hasMany(RecipeReview, {
+Recipe.hasMany(Review, {
   foreignKey: "recipeId",
 });
 
-RecipeReview.belongsTo(Recipe, {
+Review.belongsTo(Recipe, {
+  foreignKey: "recipeId",
+});
+
+User.hasOne(Favorites, {
+  foreignKey: "userId",
+});
+
+Favorites.belongsTo(User, {
+  foreignKey: "userId",
+});
+
+Recipe.hasMany(Favorites, {
+  foreignKey: "recipeId",
+});
+
+Favorites.belongsTo(Recipe, {
   foreignKey: "recipeId",
 });
 

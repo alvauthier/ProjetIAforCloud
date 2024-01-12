@@ -21,6 +21,10 @@ module.exports = function (connection) {
                 type: DataTypes.STRING,
                 allowNull: true,
             },
+            image: {
+                type: DataTypes.STRING,
+                allowNull: false,
+            },
         },
         {
             tableName: "recipe",

@@ -1,0 +1,40 @@
+.uniqueRecipeLayout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    margin-top: 3%;
+    padding: 0 5%;
+    gap: 1%;
+}
+
+.uniqueRecipeLayout_left-col {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+    grid-column: 1;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.uniqueRecipeLayout_middle-col {
+    grid-column: 2;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+.uniqueRecipeLayout_right-col {
+    grid-column: 3;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: flex;
+    gap: 4%;
+    flex-direction: column;
+}
+
+.simRecipeLink {
+    text-decoration: none;
+    color: black;
+}
+
+.uniqueRecipe_accompaniment {
+    margin-top: 2%;
+}
