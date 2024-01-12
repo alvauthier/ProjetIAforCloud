@@ -13,7 +13,10 @@ const RecipeSearchBar = ({ onSearch }) => {
 
     const speechRecognition = useMemo(() => {
         if (isSpeechRecognitionSupported) {
-            return new window.webkitSpeechRecognition();
+            const recognition = new window.webkitSpeechRecognition();
+            recognition.lang = 'fr-FR';
+            recognition.interimResults = true;
+            return recognition;
         } else {
             return null;
         }
@@ -93,8 +96,8 @@ const RecipeSearchBar = ({ onSearch }) => {
     };
 
     useEffect(() => {
-        speechRecognition.lang = 'fr-FR';
-        speechRecognition.interimResults = true;
+        // speechRecognition.lang = 'fr-FR';
+        // speechRecognition.interimResults = true;
 
         const onResult = (event) => {
             setSearchTerm(event.results[event.resultIndex][0].transcript);
