@@ -244,22 +244,6 @@ function Recipe() {
                             </li>})}
                     </div>
                 </div>
-                <div>
-                    <div className="">
-                        <h4>Commentaires</h4>
-                        <div>{recipeDetails.Reviews.map((review) => { return <div key={review.id}>{review.review}</div>})}</div>
-                    </div>
-                    <div className="">
-                        <h4>Laisse un commentaire et une note</h4>
-                        <CommentAndRatingForm setReload={setReload} reload={reload}/>
-                        {comments.map((comment) => {
-                            <li key={index}>
-                               <p>Commentaire : {comment.comment}</p>
-                               <p>Note : {comment.rating}</p> 
-                            </li>})}
-                    </div>
-                </div>
-
             </main>
         </>
     );
