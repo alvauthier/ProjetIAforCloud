@@ -11,6 +11,7 @@ const recipesRoutes = require('./routes/recipes');
 const uniqueRecipesRoutes = require('./routes/uniqueRecipe');
 const similarRecipesRoutes = require('./routes/similarRecipes');
 const accompanimentsRoutes = require('./routes/accompaniments');
+const favoritesRoutes = require('./routes/favorites');
 const errorsHandler = require("./middleware/errorsHandler");
 
 
@@ -38,6 +39,7 @@ app.use("/recipes", recipesRoutes)
 app.use("/uniqueRecipe", uniqueRecipesRoutes)
 app.use("/similarRecipe", similarRecipesRoutes)
 app.use("/accompaniments", accompanimentsRoutes)
+app.use("/favorites", favoritesRoutes)
 
 app.use(errorsHandler);
 

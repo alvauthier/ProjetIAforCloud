@@ -42,6 +42,11 @@ function NavBar({ isConnected, handleDisconnect, isAdmin, isManager }) {
                         Profil
                       </Link>
                     </li>
+                    <li>
+                      <Link to="/favorites" className="header__links">
+                        Mes favoris
+                      </Link>
+                    </li>
                   </>
                 )
                 : <></>

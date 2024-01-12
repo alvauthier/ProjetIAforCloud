@@ -21,7 +21,7 @@
     margin-bottom: 20px;
 }
 
-.recipe button {
+.recipe .consult {
     background-color: #007BFF;
     color: white;
     border: none;
@@ -31,6 +31,6 @@
     text-decoration: none;
 }
 
-.recipe button:hover {
+.recipe .consult:hover {
     background-color: #0056b3;
 }
