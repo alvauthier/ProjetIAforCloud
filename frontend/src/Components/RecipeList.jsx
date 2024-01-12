@@ -47,7 +47,7 @@ const RecipeList = ({ recipes }) => {
                             <>
                                 <h2>{recipeDetails[recipeId].name}</h2>
                                 <p>{recipeDetails[recipeId].description}</p>
-                                <button onClick={() => handleConsult(recipeId)}>Consulter la recette</button>
+                                <button className='consult' onClick={() => handleConsult(recipeId)}>Consulter la recette</button>
                             </>
                         ) : (
                             <p>Chargement des détails...</p>
@@ -55,7 +55,7 @@ const RecipeList = ({ recipes }) => {
                     </div>
                 ))
             ) : (
-                <p>Aucune recette n'a été trouvée. Faites une recherche pour voir apparaître vos résultats !</p>
+                <p>Aucune recette n'a été trouvée. Réessayez votre recherche ou bien saisissez un autre terme !</p>
             )}
         </div>
     );

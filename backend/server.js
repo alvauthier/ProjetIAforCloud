@@ -9,6 +9,7 @@ const ingredientsRoutes = require('./routes/ingredients');
 const restrictionsRoutes = require('./routes/restrictions');
 const recipesRoutes = require('./routes/recipes');
 const uniqueRecipesRoutes = require('./routes/uniqueRecipe');
+const favoritesRoutes = require('./routes/favorites');
 const errorsHandler = require("./middleware/errorsHandler");
 
 
@@ -34,6 +35,7 @@ app.use("/ingredients", ingredientsRoutes)
 app.use("/restrictions", restrictionsRoutes)
 app.use("/recipes", recipesRoutes)
 app.use("/uniqueRecipe", uniqueRecipesRoutes)
+app.use("/favorites", favoritesRoutes)
 
 app.use(errorsHandler);
 

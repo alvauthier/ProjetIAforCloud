@@ -8,6 +8,7 @@ function Recipe() {
         Ingredients: []
     })
     const [similarRecepes, setSimilarRecepes] = useState(null)
+    const [isFavorited, setIsFavorited] = useState(false);
 
     let { id } = useParams()
 
@@ -34,10 +35,93 @@ function Recipe() {
     }, []);
         console.log(recipeDetails.Ingredients.map(i=> {return i.IngredientRecipe.quantity}))
 
+        const handleFavoriteClick = async () => {
+            if (isFavorited) {
+                removeFavorite();
+            } else {
+                addFavorite();
+            }
+        }
+
+
+        const addFavorite = async () => {
+            const recipeId = id;
+            try {
+                const response = await fetch(
+                    `${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`,
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+    
+                if (response.status === 200) {
+                    setIsFavorited(!isFavorited);
+                } else {
+                    console.error('Erreur lors de l\'ajout de la restriction');
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'ajout de la restriction:', error);
+            }
+        }
+
+        const removeFavorite = async () => {
+            const recipeId = id;
+            try {
+                const response = await fetch(
+                    `${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`,
+                    {
+                        method: "DELETE",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+    
+                if (response.status === 200) {
+                    setIsFavorited(!isFavorited);
+                } else {
+                    console.error('Erreur lors de l\'ajout de la restriction');
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'ajout de la restriction:', error);
+            }
+        }
+
+        useEffect(() => {
+            async function checkIfFavorited() {
+                const recipeId = id;
+                try {
+                    const response = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`, {
+                        method: 'GET',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
+                    if (!response.ok) {
+                        throw new Error(`Réponse non valide: ${response.status}`);
+                    }
+                    const { isFavorited } = await response.json();
+                    setIsFavorited(isFavorited);
+                } catch (error) {
+                    console.error("Erreur lors de la récupération des favoris :", error);
+                }
+            }
+            checkIfFavorited();
+        }, []);
+
     return (
         <>
             <main>
                 <h1>{recipeDetails.name}</h1>
+                <button onClick={handleFavoriteClick}>
+                {isFavorited ? '❤️' : '🤍'}
+                </button>
                 <div className="uniqueRecipeLayout">
                     <div className="uniqueRecipeLayout_left-col">
                         <div>

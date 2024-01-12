@@ -52,6 +52,11 @@ function Login({ handleConnect }) {
                 <div className="login-signup">
 
                     <form className="login-signup__form" onSubmit={handleSubmit}>
+                    <h2>
+                        <Link to="/" className="logo">WeCook</Link>
+                    </h2>
+                        <p>Connexion</p>
+                        <p><Link to="/">Retourner à l'accueil</Link></p>
                         <input type="email" id="email" name="email" placeholder="Email" autoComplete="email" required />
                         <input type="password" id="password" name="password" placeholder="Mot de passe" autoComplete="current-password" required/>
                         <div className="login-signup__form__submit">
