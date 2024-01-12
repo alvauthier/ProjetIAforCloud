@@ -65,6 +65,8 @@ const Favorites = ({}) => {
                             favorites.map((favorite, index) => (
                                 <div key={index} className="recipe">
                                     <h2>{favorite.Recipe.name}</h2>
+                                    <img src={favorite.image} alt={favorite.name} width="250px"/>
+
                                     <p>{favorite.Recipe.description}</p>
                                     <button className="consult" onClick={() => handleConsult(favorite.recipeId)}>Consulter la recette</button>
                                     <button className="favorite-button" onClick={() => removeFavorite(favorite.recipeId)}>

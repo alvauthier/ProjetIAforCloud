@@ -235,7 +235,10 @@ function Recipe() {
                             <h4>Description</h4>
                             <div>{recipeDetails.description}</div>
                         </div>
+                        <div>
+                        <img src={recipeDetails.image} alt={recipeDetails.name} width="150px"/>
 
+                        </div>
                         <div>
                             <h4>Note</h4>
                             {note} ⭐

@@ -12,7 +12,7 @@ async function getUniqueRecipe(req, res) {
 
     try {
         const recipes = await Recipe.findByPk(recipeId, {
-            attributes: ['id', 'name', 'description', "instructions"],
+            attributes: ['id', 'name', 'description', "instructions","image"],
             include: [
                 {
                     model: Ingredient,
