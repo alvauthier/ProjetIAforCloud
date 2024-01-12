@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 const env = import.meta.env;
 import "@css/UniqueRecipe.css"
 
@@ -7,15 +7,8 @@ function Recipe() {
     const [recipeDetails, setRecipeDetails] = useState({
         Ingredients: []
     })
-    const [similarRecepes, setSimilarRecepes] = useState({
-        Recettes: []
-    })
-    let navigate = useNavigate()
-
-    function handleConsult(recipeId) {
-        navigate(`/recipe/${recipeId}`)
-        console.log("toto")
-    }
+    const [similarRecepes, setSimilarRecepes] = useState(null)
+    const [isFavorited, setIsFavorited] = useState(false);
 
     let { id } = useParams()
 
@@ -38,35 +31,97 @@ function Recipe() {
                 return setRecipeDetails(detail);
             })
         }
+        fetchRecipeDetails();
+    }, []);
+        console.log(recipeDetails.Ingredients.map(i=> {return i.IngredientRecipe.quantity}))
 
-        async function fetchSimilarRecipe() {
+        const handleFavoriteClick = async () => {
+            if (isFavorited) {
+                removeFavorite();
+            } else {
+                addFavorite();
+            }
+        }
+
+
+        const addFavorite = async () => {
             const recipeId = id;
-            let detail = {}
-            await new Promise(async () => {
+            try {
+                const response = await fetch(
+                    `${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`,
+                    {
+                        method: "POST",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+
+                if (response.status === 200) {
+                    setIsFavorited(!isFavorited);
+                } else {
+                    console.error('Erreur lors de l\'ajout de la restriction');
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'ajout de la restriction:', error);
+            }
+        }
+
+        const removeFavorite = async () => {
+            const recipeId = id;
+            try {
+                const response = await fetch(
+                    `${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`,
+                    {
+                        method: "DELETE",
+                        credentials: "include",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                );
+
+                if (response.status === 200) {
+                    setIsFavorited(!isFavorited);
+                } else {
+                    console.error('Erreur lors de l\'ajout de la restriction');
+                }
+            } catch (error) {
+                console.error('Erreur lors de l\'ajout de la restriction:', error);
+            }
+        }
+
+        useEffect(() => {
+            async function checkIfFavorited() {
+                const recipeId = id;
                 try {
-                    const response = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/similarRecipe/${recipeId}`, {})
-                        .then(response => response.json())
-                        .then(data => {
-                            const responseAI = JSON.parse(data.responseAI);
-                            setSimilarRecepes(responseAI)
-                        })
+                    const response = await fetch(`${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`, {
+                        method: 'GET',
+                        credentials: 'include',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    });
                     if (!response.ok) {
                         throw new Error(`Réponse non valide: ${response.status}`);
                     }
+                    const { isFavorited } = await response.json();
+                    setIsFavorited(isFavorited);
                 } catch (error) {
-                    console.error(`Erreur lors de la récupération des détails de la recette ${recipeId}:`, error);
+                    console.error("Erreur lors de la récupération des favoris :", error);
                 }
-            })
-        }
-
-        fetchSimilarRecipe();
-        fetchRecipeDetails();
-    }, []);
+            }
+            checkIfFavorited();
+        }, []);
 
     return (
         <>
             <main>
                 <h1>{recipeDetails.name}</h1>
+                <button onClick={handleFavoriteClick}>
+                {isFavorited ? '❤️' : '🤍'}
+                </button>
                 <div className="uniqueRecipeLayout">
                     <div className="uniqueRecipeLayout_left-col">
                         <div>
@@ -93,8 +148,8 @@ function Recipe() {
                     </div>
 
                     <div className="uniqueRecipeLayout_right-col">
-                        <h3>Recettes similaires</h3>
-                        {similarRecepes ? similarRecepes.Recettes.map(simRec => { return <div key={simRec.id}><h4>{simRec.name}</h4><button onClick={() => handleConsult(simRec.id)}>Consulter la recette</button></div> }) : <div>Pas de recettes similaires</div>}
+                        <h4>Recettes similaires</h4>
+                        <div>{similarRecepes !== null ? similarRecepes.map(simRec => {return <div>{simRec}.name</div>}) : <div>Pas de recettes similaires</div>}</div>
                     </div>
                 </div>
 

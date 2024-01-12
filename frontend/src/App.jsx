@@ -10,6 +10,7 @@ import SignUp from './Components/Authentication/SignUp';
 import Profile from './Components/Profile';
 import HomePage from './Components/HomePage';
 import Recipe from './Components/Recipe';
+import Favorites from './Components/Favorites';
 
 function App() {
   const [isConnected, setIsConnected] = useState(!!localStorage.getItem('token'));
@@ -45,6 +46,8 @@ function App() {
 
             <Route path="profile" element={<Profile />} />
             <Route path="recipe/:id" element={<Recipe/>} />
+
+            <Route path="favorites" element={<Favorites />} />
 
             {/* Route doesn't exist */}
             <Route path="*" element={<Navigate to="/" />} />
