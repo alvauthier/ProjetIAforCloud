@@ -55,7 +55,7 @@ const RecipeList = ({ recipes }) => {
                     </div>
                 ))
             ) : (
-                <p>Aucune recette n'a été trouvée. Faites une recherche pour voir apparaître vos résultats !</p>
+                <p>Aucune recette n'a été trouvée. Réessayez votre recherche ou bien saisissez un autre terme !</p>
             )}
         </div>
     );

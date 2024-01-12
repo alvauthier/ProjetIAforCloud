@@ -36,14 +36,37 @@ async function getUserFavorites(req, res) {
   }
 }
 
+async function checkRecipeFavorited(req, res) {
+  console.log('checkRecipeFavorited');
+
+  console.log(req.cookies.token);
+  const userId = await decodeUserToken(req.cookies.token);
+
+  console.log(userId);
+  const recipeId = req.params.recipeId;
+
+  try {
+    const favorite = await Favorites.findOne({ where: { userId, recipeId } });
+
+    if (favorite) {
+      console.log('favorite', favorite);
+      res.json({ isFavorited: true });
+    } else {
+      console.log('favorite not found');
+      res.json({ isFavorited: false });
+    }
+  } catch (error) {
+    console.error('Erreur lors de la vérification des favoris :', error);
+    res.status(500).json({ error: 'Une erreur est survenue lors de la vérification des favoris' });
+  }
+}
+
 async function addUserFavorite(req, res) {
 
   console.log(req.cookies.token);
   const userId = await decodeUserToken(req.cookies.token);
 
   console.log(userId);
-
-  const { restriction } = req.body;
 
   try {
     const user = await User.findByPk(userId);
@@ -52,14 +75,14 @@ async function addUserFavorite(req, res) {
       return res.status(404).json({ error: 'Utilisateur non trouvé' });
     }
 
-    const newRestriction = await Restriction.create({
+    const newFavorite = await Favorites.create({
       userId: userId,
-      name: restriction
+      recipeId: req.params.recipeId,
     });
 
-    res.json({ message: 'Restriction enregistrée avec succès', newRestriction });
+    res.json({ message: 'Favoris enregistré avec succès', newFavorite });
   } catch (error) {
-    console.error('Erreur lors de l\'enregistrement de la restriction:', error);
+    console.error('Erreur lors de l\'enregistrement du favoris:', error);
     res.status(500).json({ error: 'Erreur serveur' });
   }
 }
@@ -70,7 +93,7 @@ async function deleteUserFavorite(req, res) {
 
   console.log(userId);
 
-  const { restrictionId } = req.params;
+  const recipeId = req.params.recipeId;
 
   try {
     const user = await User.findByPk(userId);
@@ -79,17 +102,17 @@ async function deleteUserFavorite(req, res) {
       return res.status(404).json({ error: 'Utilisateur non trouvé' });
     }
 
-    const restriction = await Restriction.findByPk(restrictionId);
+    const favorite = await Favorites.findOne({ where: { userId, recipeId } });
 
-    if (!restriction) {
-      return res.status(404).json({ error: 'Restriction non trouvée' });
+    if (!favorite) {
+      return res.status(404).json({ error: 'Favori non trouvé' });
     }
 
-    await restriction.destroy();
+    await favorite.destroy();
 
-    res.json({ message: 'Restriction supprimée avec succès' });
+    res.json({ message: 'Favori supprimé avec succès' });
   } catch (error) {
-    console.error('Erreur lors de la suppression de la restriction:', error);
+    console.error('Erreur lors de la suppression du favori:', error);
     res.status(500).json({ error: 'Erreur serveur' });
   }
 }
@@ -98,4 +121,5 @@ module.exports = {
   getUserFavorites,
   addUserFavorite,
   deleteUserFavorite,
+  checkRecipeFavorited,
 };

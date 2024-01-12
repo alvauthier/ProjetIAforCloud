@@ -6,5 +6,8 @@ const authMiddleware = require('../middleware/authMiddleware');
 
 
 router.get('/', favoritesCtrl.getUserFavorites);
+router.get('/:recipeId', favoritesCtrl.checkRecipeFavorited);
+router.post('/:recipeId', favoritesCtrl.addUserFavorite);
+router.delete('/:recipeId', favoritesCtrl.deleteUserFavorite);
 
 module.exports = router;

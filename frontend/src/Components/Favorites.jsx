@@ -4,7 +4,8 @@ const env = import.meta.env;
 
 const Favorites = ({}) => {
     const [favorites, setFavorites] = useState([]);
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         const fetchFavorites = async () => {
@@ -24,10 +25,33 @@ const Favorites = ({}) => {
         };
 
         fetchFavorites();
-    }, []);
+    }, [reload]);
 
     function handleConsult(recipeId) {
         navigate(`/recipe/${recipeId}`)
+    }
+
+    const removeFavorite = async (recipeId) => {
+        try {
+            const response = await fetch(
+                `${env.VITE_URL}:${env.VITE_PORT_BACK}/favorites/${recipeId}`,
+                {
+                    method: "DELETE",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+
+            if (response.status === 200) {
+                setReload(!reload);
+            } else {
+                console.error('Erreur lors de l\'ajout de la restriction');
+            }
+        } catch (error) {
+            console.error('Erreur lors de l\'ajout de la restriction:', error);
+        }
     }
 
     return (
@@ -42,7 +66,7 @@ const Favorites = ({}) => {
                                     <h2>{favorite.Recipe.name}</h2>
                                     <p>{favorite.Recipe.description}</p>
                                     <button className="consult" onClick={() => handleConsult(favorite.recipeId)}>Consulter la recette</button>
-                                    <button className="favorite-button" onClick={() => handleFavorite(favorite.recipeId)}>
+                                    <button className="favorite-button" onClick={() => removeFavorite(favorite.recipeId)}>
                                     ❤️
                                     </button>
                                 </div>

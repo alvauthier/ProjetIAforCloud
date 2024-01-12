@@ -53,6 +53,11 @@ function SignUp() {
             <main className="authentification">
                 <div className="login-signup">
                     <form className="login-signup__form" onSubmit={handleSubmit}>
+                    <h2>
+                        <Link to="/" className="logo">WeCook</Link>
+                    </h2>
+                        <p>Inscription</p>
+                        <p><Link to="/">Retourner à l'accueil</Link></p>
                         {
                             error && <p className="error">{error}</p>
                         }
