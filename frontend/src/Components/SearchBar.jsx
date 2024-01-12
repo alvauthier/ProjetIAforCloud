@@ -103,10 +103,16 @@ const RecipeSearchBar = ({ onSearch }) => {
             setSearchTerm(event.results[event.resultIndex][0].transcript);
         };
 
-        speechRecognition.addEventListener('result', onResult);
+        if (speechRecognition !== null) {
+            speechRecognition.addEventListener('result', onResult);
+        }
+        // speechRecognition.addEventListener('result', onResult);
 
         return () => {
-            speechRecognition.removeEventListener('result', onResult);
+            // speechRecognition.removeEventListener('result', onResult);
+            if (speechRecognition !== null) {
+                speechRecognition.removeEventListener('result', onResult);
+            }
         };
     }, [speechRecognition]);
 
