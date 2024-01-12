@@ -25,7 +25,7 @@ async function getUserFavorites(req, res) {
       attributes: ['id', 'recipeId'],
       include: [{
         model: Recipe,
-        attributes: ['name', 'description'],
+        attributes: ['name', 'description',"image"],
       }],
     });
     console.log(favorites);

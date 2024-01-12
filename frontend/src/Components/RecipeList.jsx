@@ -46,6 +46,7 @@ const RecipeList = ({ recipes }) => {
                         {recipeDetails[recipeId] ? (
                             <>
                                 <h2>{recipeDetails[recipeId].name}</h2>
+                                <img src={recipeDetails[recipeId].image} alt={recipeDetails[recipeId].name} width="250px"/>
                                 <p>{recipeDetails[recipeId].description}</p>
                                 <button className='consult' onClick={() => handleConsult(recipeId)}>Consulter la recette</button>
                             </>

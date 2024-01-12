@@ -438,5 +438,37 @@
             "name" : "fromage frais",
             "unit" : "g"
         }
+    },
+    {
+        "model" : "Ingredient",
+        "data" : {
+            "id" : 57,
+            "name" : "maïzena",
+            "unit" : "cuillère à café"
+        }
+    },
+    {
+        "model" : "Ingredient",
+        "data" : {
+            "id" : 58,
+            "name" : "sucre",
+            "unit" : "cuillère à café"
+        }
+    },
+    {
+        "model" : "Ingredient",
+        "data" : {
+            "id" : 59,
+            "name" : "fromage rapé",
+            "unit" : "g"
+        }
+    },
+    {
+        "model" : "Ingredient",
+        "data" : {
+            "id" : 60,
+            "name" : "parmesan",
+            "unit" : "g"
+        }
     }
 ]

@@ -2,7 +2,7 @@
     {
         "model": "IngredientRecipe",
         "data": {
-            "quantity": 1,
+            "quantity": 600,
             "ingredientId": 1,
             "recipeId": 1
         }
@@ -10,15 +10,55 @@
     {
         "model": "IngredientRecipe",
         "data": {
-            "quantity": 1,
-            "ingredientId": 4,
+            "quantity": 40,
+            "ingredientId": 40,
             "recipeId": 1
         }
     },
     {
         "model": "IngredientRecipe",
         "data": {
-            "quantity": 1,
+            "quantity": 2,
+            "ingredientId": 58,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 4,
+            "ingredientId": 8,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 3,
+            "ingredientId": 14,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 4,
+            "ingredientId": 57,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 4,
+            "ingredientId": 50,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
             "ingredientId": 5,
             "recipeId": 1
         }
@@ -26,8 +66,16 @@
     {
         "model": "IngredientRecipe",
         "data": {
-            "quantity": 1,
-            "ingredientId": 8,
+            "quantity": 4,
+            "ingredientId": 4,
+            "recipeId": 1
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 4,
+            "ingredientId": 51,
             "recipeId": 1
         }
     },
@@ -42,7 +90,63 @@
     {
         "model": "IngredientRecipe",
         "data": {
-            "quantity": 1,
+            "quantity": 15,
+            "ingredientId": 11,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 15,
+            "ingredientId": 22,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 59,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 30,
+            "ingredientId": 21,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 50,
+            "ingredientId": 31,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 9,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 4,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 5,
             "ingredientId": 12,
             "recipeId": 2
         }
@@ -50,8 +154,40 @@
     {
         "model": "IngredientRecipe",
         "data": {
-            "quantity": 1,
+            "quantity": 400,
             "ingredientId": 1,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 2,
+            "ingredientId": 5,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 25,
+            "ingredientId": 48,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 1,
+            "ingredientId": 30,
+            "recipeId": 2
+        }
+    },
+    {
+        "model": "IngredientRecipe",
+        "data": {
+            "quantity": 30,
+            "ingredientId": 60,
             "recipeId": 2
         }
     },
