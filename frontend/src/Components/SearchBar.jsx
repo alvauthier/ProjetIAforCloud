@@ -8,7 +8,18 @@ const RecipeSearchBar = ({ onSearch }) => {
     const [isListening, setIsListening] = useState(false);
     const [error, setError] = useState(null);
     const [recipes, setRecipes] = useState([]);;
-    const speechRecognition = useMemo(() => new window.webkitSpeechRecognition(), []);
+
+    const isSpeechRecognitionSupported = 'SpeechRecognition' in window || 'webkitSpeechRecognition' in window;
+
+    const speechRecognition = useMemo(() => {
+        if (isSpeechRecognitionSupported) {
+            return new window.webkitSpeechRecognition();
+        } else {
+            return null;
+        }
+    }, [isSpeechRecognitionSupported]);
+
+    // const speechRecognition = useMemo(() => new window.webkitSpeechRecognition(), []);
 
     const handleInputChange = (event) => {
         setSearchTerm(event.target.value);
@@ -41,6 +52,18 @@ const RecipeSearchBar = ({ onSearch }) => {
                 console.error('Erreur lors de la requête vers le backend :', error);
             }
         );
+    };
+
+    const handleVocalButtonClick = () => {
+        if (isSpeechRecognitionSupported) {
+            if (isListening) {
+                stopListening();
+            } else {
+                startListening();
+            }
+        } else {
+            alert('La reconnaissance vocale n\'est pas supportée par votre navigateur.');
+        }
     };
 
     const handleVocalSearch = async (searchValue) => {
@@ -118,17 +141,17 @@ const RecipeSearchBar = ({ onSearch }) => {
         setIsListening(false);
     }, []);
 
-    speechRecognition.onerror = (event) => {
-        if (event.error === 'not-allowed') {
-            setError('L\'accès au microphone a été refusé. Vous ne pouvez pas utiliser la reconnaissance vocale sans autoriser votre navigateur.');
-        } else {
-            setError('Une erreur s\'est produite lors de la reconnaissance vocale.');
-        }
-    };
+    // speechRecognition.onerror = (event) => {
+    //     if (event.error === 'not-allowed') {
+    //         setError('L\'accès au microphone a été refusé. Vous ne pouvez pas utiliser la reconnaissance vocale sans autoriser votre navigateur.');
+    //     } else {
+    //         setError('Une erreur s\'est produite lors de la reconnaissance vocale.');
+    //     }
+    // };
 
-    const handlePermissionReset = () => {
-        alert('Pour réinitialiser les autorisations du microphone, allez dans les paramètres de votre navigateur, recherchez les paramètres de confidentialité ou de contenu, puis réinitialisez les autorisations du microphone pour ce site.');
-    };
+    // const handlePermissionReset = () => {
+    //     alert('Pour réinitialiser les autorisations du microphone, allez dans les paramètres de votre navigateur, recherchez les paramètres de confidentialité ou de contenu, puis réinitialisez les autorisations du microphone pour ce site.');
+    // };
 
     return (
         <div className="recipe-search-bar">
@@ -143,17 +166,17 @@ const RecipeSearchBar = ({ onSearch }) => {
         {isListening ? (
                 <div>
                     <p className="microphone-button">Le micro est actuellement utilisé et le site vous écoute...</p>
-                    <button onClick={stopListening}>&#9632; Arrêter la reconnaissance vocale</button>
+                    <button onClick={handleVocalButtonClick}>&#9632; Arrêter la reconnaissance vocale</button>
                 </div>
             ) : (
-                <button onClick={startListening}>&#127908; Démarrer la reconnaissance vocale</button>
+                <button onClick={handleVocalButtonClick}>&#127908; Démarrer la reconnaissance vocale</button>
             )}
-            {error && (
+            {/* {error && (
             <div>
                 <p>{error}</p>
                 <button onClick={handlePermissionReset}>Réinitialiser les autorisations du microphone</button>
             </div>
-        )}
+            )} */}
         <RecipeList recipes={recipes} />
         </div>
     );
