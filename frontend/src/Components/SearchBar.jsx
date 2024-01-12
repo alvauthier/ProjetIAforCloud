@@ -128,9 +128,13 @@ const RecipeSearchBar = ({ onSearch }) => {
     useEffect(() => {
         if (isListening) {
             setSearchTerm('');
-            speechRecognition.start();
+            if (speechRecognition !== null) {
+                speechRecognition.start();
+            }
         } else {
-            speechRecognition.stop();
+            if (speechRecognition !== null) {
+                speechRecognition.stop();
+            }
         }
     }, [isListening, speechRecognition]);
 
