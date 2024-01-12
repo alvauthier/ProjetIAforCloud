@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
+import { FaHeart } from 'react-icons/fa';
 const env = import.meta.env;
 
 const Favorites = ({}) => {
@@ -67,7 +68,7 @@ const Favorites = ({}) => {
                                     <p>{favorite.Recipe.description}</p>
                                     <button className="consult" onClick={() => handleConsult(favorite.recipeId)}>Consulter la recette</button>
                                     <button className="favorite-button" onClick={() => removeFavorite(favorite.recipeId)}>
-                                    ❤️
+                                        <FaHeart style={{ color: 'red' }} size={25} />
                                     </button>
                                 </div>
                             ))
