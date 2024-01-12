@@ -13,11 +13,13 @@ const similarRecipesRoutes = require('./routes/similarRecipes');
 const accompanimentsRoutes = require('./routes/accompaniments');
 const favoritesRoutes = require('./routes/favorites');
 const errorsHandler = require("./middleware/errorsHandler");
+const reviewsRoutes = require('./routes/reviews');
 
 
 
 const app = express();
-const sequelize = require('sequelize')
+const sequelize = require('sequelize');
+const review = require('./db/models/review');
 
 // Use to allow cross-origin requests
 app.use(cors({
@@ -40,6 +42,7 @@ app.use("/uniqueRecipe", uniqueRecipesRoutes)
 app.use("/similarRecipe", similarRecipesRoutes)
 app.use("/accompaniments", accompanimentsRoutes)
 app.use("/favorites", favoritesRoutes)
+app.use("/reviews", reviewsRoutes)
 
 app.use(errorsHandler);
 
