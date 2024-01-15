@@ -11,7 +11,8 @@ Ce document décrit comment configurer et lancer le projet.
 Dans le dossier `backend` :
 
 1. Dupliquez le fichier `.env` pour créer un nouveau fichier `.env.local`.
-2. Ajoutez votre clé API OpenAI dans le fichier `.env.local`.
+2. Pour les variables qui concernent la base de données voici ce qu'il faut mettre : `DB_NAME=database`, `DB_USER=root`, `DB_PASSWORD=root`
+3. Ajoutez votre clé API OpenAI dans le fichier `.env.local` en remplaçant `default` par votre clé.
 3. Exécutez la commande suivante dans le terminal :
 ```bash
 npm install
